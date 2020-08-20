@@ -153,8 +153,6 @@ const SignUp = () => {
                     {errors.password.length > 0 ? <p>{errors.password}</p> : null}
                 </label>
             </div>
-            <br/>
-            <br/>
             <button disabled={buttonDisabled}>Sign Up</button>
         </form>
     )
