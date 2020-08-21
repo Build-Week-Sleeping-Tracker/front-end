@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const SignUp = () => {
   const [user, setUser] = useState([]);
@@ -101,82 +102,120 @@ const SignUp = () => {
       {serverError ? <p>{serverError}</p> : null}
       <div>
         <label htmlFor="firstName">
-          <div>First Name</div>
-          <input
+          <Input
             id="firstName"
             name="fname"
             type="text"
+            placeholder="First Name"
             value={credentials.fname}
             onChange={inputChange}
           />
-          {errors.fname.length > 0 ? <p>{errors.fname}</p> : null}
+          <Error>
+            {errors.fname.length > 0 ? <p>{errors.fname}</p> : null}
+          </Error>
         </label>
       </div>
-      <br />
-      <br />
       <div>
         <label htmlFor="lastName">
-          <div>Last Name</div>
-          <input
+          <Input
             id="lastName"
             name="lname"
             type="text"
+            placeholder="Last Name"
             value={credentials.lname}
             onChange={inputChange}
           />
-          {errors.lname.length > 0 ? <p>{errors.lname}</p> : null}
+          <Error>
+            {errors.lname.length > 0 ? <p>{errors.lname}</p> : null}
+          </Error>
         </label>
       </div>
-      <br />
-      <br />
       <div>
         <label htmlFor="email">
-          <div>Email</div>
-          <input
+          <Input
             id="email"
             name="email"
             type="email"
+            placeholder="Email"
             value={credentials.email}
             onChange={inputChange}
           />
-          {errors.email.length > 0 ? <p>{errors.email}</p> : null}
+          <Error>
+            {errors.email.length > 0 ? <p>{errors.email}</p> : null}
+          </Error>
         </label>
       </div>
-      <br />
-      <br />
       <div>
         <label htmlFor="username">
-          <div>Create a Username</div>
-          <input
+          <Input
             id="username"
             name="username"
             type="text"
+            placeholder="Username"
             value={credentials.username}
             onChange={inputChange}
           />
-          {errors.username.length > 0 ? <p>{errors.username}</p> : null}
+          <Error>
+            {errors.username.length > 0 ? <p>{errors.username}</p> : null}
+          </Error>
         </label>
       </div>
-      <br />
-      <br />
       <div>
         <label htmlFor="password">
-          <div>Create a Password</div>
-          <input
+          <Input
             id="password"
             name="password"
             type="text"
+            placeholder="Password"
             value={credentials.password}
             onChange={inputChange}
           />
-          {errors.password.length > 0 ? <p>{errors.password}</p> : null}
+          <Error>
+            {errors.password.length > 0 ? <p>{errors.password}</p> : null}
+          </Error>
         </label>
       </div>
-      <Link to="/login">
-        <button disabled={buttonDisabled}>Sign Up</button>
-      </Link>
+      <div className="btn-wrapper">
+        <Link to="/login">
+          <Button disabled={buttonDisabled}>Sign Up</Button>
+          <p>Already have an account?</p>
+        </Link>
+      </div>
     </form>
   );
 };
 
 export default SignUp;
+
+const Input = styled.input`
+  border: 3px solid #282c34;
+  border-radius: 20px;
+  outline: none;
+  height: 30px;
+  width: 250px;
+  font-size: 1.2rem;
+  padding: 3px 12px;
+  margin: 12px 0px;
+`;
+
+const Button = styled.button`
+  background-color: #282c34;
+  border-radius: 20px;
+  padding: 5px 32px;
+  font-size: 1.2rem;
+  color: white;
+  margin: 24px 2px;
+`;
+
+const Error = styled.div`
+  margin: 0px 12px;
+  color: red;
+`;
+
+// const ButtonAlternate = styled.button`
+//   border-radius: 20px;
+//   padding: 5px 32px;
+//   font-size: 1.2rem;
+//   color: black;
+//   margin: 24px 2px;
+// `;
