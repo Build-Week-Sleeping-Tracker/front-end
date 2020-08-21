@@ -176,7 +176,7 @@ const SignUp = () => {
         </label>
       </div>
       <div className="btn-wrapper">
-        <Link to="/login">
+        <Link to="/">
           <Button disabled={buttonDisabled}>Sign Up</Button>
           <p>Already have an account?</p>
         </Link>
