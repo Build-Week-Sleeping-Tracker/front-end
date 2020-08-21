@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
   Navlink,
 } from "react-router-dom";
 
 import "./App.css";
-import Login from "./components/Login";
+
 import SignUp from "./components/SignUp";
+import Login from "./components/Login";
+import HomePage from "./components/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 
@@ -20,20 +21,16 @@ function App() {
         <header className="App-header">
           <h2>Sleep Tracker App</h2>
           <div>
-            <h3>Login</h3>
-            <Login />
-            <br />
-            <br />
-            <br />
-            <h3>Sign-Up</h3>
-            <SignUp />
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <PrivateRoute exact path="/protected" component={Dashboard} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} />
+            </Switch>
+
+            {/* <SignUp /> */}
           </div>
         </header>
-        <Switch>
-          <Route exact path="/" />
-          <PrivateRoute exact path="/protected" component={Dashboard} />
-          <Route exact path="/login" component={Login} />
-        </Switch>
       </div>
     </Router>
   );

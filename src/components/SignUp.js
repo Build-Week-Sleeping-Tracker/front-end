@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [user, setUser] = useState([]);
@@ -171,7 +172,9 @@ const SignUp = () => {
           {errors.password.length > 0 ? <p>{errors.password}</p> : null}
         </label>
       </div>
-      <button disabled={buttonDisabled}>Sign Up</button>
+      <Link to="/login">
+        <button disabled={buttonDisabled}>Sign Up</button>
+      </Link>
     </form>
   );
 };
