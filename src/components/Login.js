@@ -1,6 +1,35 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import styled from 'styled-components';
+
+const Input = styled.input`
+
+    border: 3px solid #282c34;
+    border-radius: 20px;
+    outline: none;
+    height: 30px;
+    width: 250px;
+    font-size: 1.2rem;
+    padding: 3px 12px;
+    margin: 12px 0px;
+`
+
+const Button = styled.button`
+
+    background-color: #282c34;
+    border-radius: 20px; 
+    padding: 5px 32px;
+    font-size: 1.2rem;
+    color: white;
+    margin: 24px 0px;
+`
+
+const Error = styled.div`
+    
+    margin: 0px 12px;
+    color: red;
+`
 
 const Login = (props) => {
   //   const [user, setUser] = useState([]);
@@ -101,33 +130,31 @@ const Login = (props) => {
       {serverError ? <p>{serverError}</p> : null}
       <div>
         <label htmlFor="username">
-          <div>Username</div>
-          <input
+          <Input
             id="username"
             name="username"
             type="text"
+            placeholder="Username"
             value={formSchema.username}
             onChange={inputChange}
           />
-          {errors.username.length > 0 ? <p>{errors.username}</p> : null}
+          <Error>{errors.username.length > 0 ? <p>{errors.username}</p> : null}</Error>
         </label>
       </div>
-      <br />
-      <br />
       <div>
         <label htmlFor="password">
-          <div>Password</div>
-          <input
+          <Input
             id="password"
             name="password"
             type="text"
+            placeholder="Password"
             value={formSchema.password}
             onChange={inputChange}
           />
-          {errors.password.length > 0 ? <p>{errors.password}</p> : null}
+          <Error>{errors.password.length > 0 ? <p>{errors.password}</p> : null}</Error>
         </label>
       </div>
-      <button disabled={buttonDisabled}>Login</button>
+      <Button disabled={buttonDisabled}>Login</Button>
     </form>
   );
 };
