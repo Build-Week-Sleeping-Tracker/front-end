@@ -1,35 +1,9 @@
+// located in the HomePage Component;
+
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
-import styled from 'styled-components';
-
-const Input = styled.input`
-
-    border: 3px solid #282c34;
-    border-radius: 20px;
-    outline: none;
-    height: 30px;
-    width: 250px;
-    font-size: 1.2rem;
-    padding: 3px 12px;
-    margin: 12px 0px;
-`
-
-const Button = styled.button`
-
-    background-color: #282c34;
-    border-radius: 20px; 
-    padding: 5px 32px;
-    font-size: 1.2rem;
-    color: white;
-    margin: 24px 0px;
-`
-
-const Error = styled.div`
-    
-    margin: 0px 12px;
-    color: red;
-`
+import styled from "styled-components";
 
 const Login = (props) => {
   //   const [user, setUser] = useState([]);
@@ -117,7 +91,7 @@ const Login = (props) => {
         console.log("rh: login success: res ", res);
         localStorage.setItem("authToken", res.data.token);
         console.log(res.data.token);
-        // props.history.push("/protected");
+        props.history.push("/protected");
       })
       .catch((err) => {
         console.error("rh: login failed: err:", err.message);
@@ -138,7 +112,9 @@ const Login = (props) => {
             value={formSchema.username}
             onChange={inputChange}
           />
-          <Error>{errors.username.length > 0 ? <p>{errors.username}</p> : null}</Error>
+          <Error>
+            {errors.username.length > 0 ? <p>{errors.username}</p> : null}
+          </Error>
         </label>
       </div>
       <div>
@@ -151,7 +127,9 @@ const Login = (props) => {
             value={formSchema.password}
             onChange={inputChange}
           />
-          <Error>{errors.password.length > 0 ? <p>{errors.password}</p> : null}</Error>
+          <Error>
+            {errors.password.length > 0 ? <p>{errors.password}</p> : null}
+          </Error>
         </label>
       </div>
       <Button disabled={buttonDisabled}>Login</Button>
@@ -160,3 +138,28 @@ const Login = (props) => {
 };
 
 export default Login;
+
+const Input = styled.input`
+  border: 3px solid #282c34;
+  border-radius: 20px;
+  outline: none;
+  height: 30px;
+  width: 250px;
+  font-size: 1.2rem;
+  padding: 3px 12px;
+  margin: 12px 0px;
+`;
+
+const Button = styled.button`
+  background-color: #282c34;
+  border-radius: 20px;
+  padding: 5px 32px;
+  font-size: 1.2rem;
+  color: white;
+  margin: 24px 0px;
+`;
+
+const Error = styled.div`
+  margin: 0px 12px;
+  color: red;
+`;

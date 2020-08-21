@@ -1,36 +1,8 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
-import styled from 'styled-components';
-
-const Input = styled.input`
-
-    border: 3px solid #282c34;
-    border-radius: 20px;
-    outline: none;
-    height: 30px;
-    width: 250px;
-    font-size: 1.2rem;
-    padding: 3px 12px;
-    margin: 12px 0px;
-`
-
-const Button = styled.button`
-
-    background-color: #282c34;
-    border-radius: 20px; 
-    padding: 5px 32px;
-    font-size: 1.2rem;
-    color: white;
-    margin: 24px 0px;
-
-`
-
-const Error = styled.div`
-
-    margin: 0px 12px;
-    color: red;
-`
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const SignUp = () => {
   const [user, setUser] = useState([]);
@@ -138,7 +110,9 @@ const SignUp = () => {
             value={credentials.fname}
             onChange={inputChange}
           />
-          <Error>{errors.fname.length > 0 ? <p>{errors.fname}</p> : null}</Error>
+          <Error>
+            {errors.fname.length > 0 ? <p>{errors.fname}</p> : null}
+          </Error>
         </label>
       </div>
       <div>
@@ -151,7 +125,9 @@ const SignUp = () => {
             value={credentials.lname}
             onChange={inputChange}
           />
-          <Error>{errors.lname.length > 0 ? <p>{errors.lname}</p> : null}</Error>
+          <Error>
+            {errors.lname.length > 0 ? <p>{errors.lname}</p> : null}
+          </Error>
         </label>
       </div>
       <div>
@@ -164,7 +140,9 @@ const SignUp = () => {
             value={credentials.email}
             onChange={inputChange}
           />
-          <Error>{errors.email.length > 0 ? <p>{errors.email}</p> : null}</Error>
+          <Error>
+            {errors.email.length > 0 ? <p>{errors.email}</p> : null}
+          </Error>
         </label>
       </div>
       <div>
@@ -177,7 +155,9 @@ const SignUp = () => {
             value={credentials.username}
             onChange={inputChange}
           />
-          <Error>{errors.username.length > 0 ? <p>{errors.username}</p> : null}</Error>
+          <Error>
+            {errors.username.length > 0 ? <p>{errors.username}</p> : null}
+          </Error>
         </label>
       </div>
       <div>
@@ -190,12 +170,52 @@ const SignUp = () => {
             value={credentials.password}
             onChange={inputChange}
           />
-          <Error>{errors.password.length > 0 ? <p>{errors.password}</p> : null}</Error>
+          <Error>
+            {errors.password.length > 0 ? <p>{errors.password}</p> : null}
+          </Error>
         </label>
       </div>
-      <Button disabled={buttonDisabled}>Sign Up</Button>
+      <div className="btn-wrapper">
+        <Link to="/login">
+          <Button disabled={buttonDisabled}>Sign Up</Button>
+          <p>Already have an account?</p>
+        </Link>
+      </div>
     </form>
   );
 };
 
 export default SignUp;
+
+const Input = styled.input`
+  border: 3px solid #282c34;
+  border-radius: 20px;
+  outline: none;
+  height: 30px;
+  width: 250px;
+  font-size: 1.2rem;
+  padding: 3px 12px;
+  margin: 12px 0px;
+`;
+
+const Button = styled.button`
+  background-color: #282c34;
+  border-radius: 20px;
+  padding: 5px 32px;
+  font-size: 1.2rem;
+  color: white;
+  margin: 24px 2px;
+`;
+
+const Error = styled.div`
+  margin: 0px 12px;
+  color: red;
+`;
+
+// const ButtonAlternate = styled.button`
+//   border-radius: 20px;
+//   padding: 5px 32px;
+//   font-size: 1.2rem;
+//   color: black;
+//   margin: 24px 2px;
+// `;
