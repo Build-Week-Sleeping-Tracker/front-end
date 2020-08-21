@@ -91,7 +91,7 @@ const SignUp = () => {
         setServerError(null);
       })
       .catch((err) => {
-        setServerError("There has been an error");
+        console.error("your signup has failed", err.message);
       });
   };
 
