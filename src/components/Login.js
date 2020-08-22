@@ -4,12 +4,13 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
   //   const [user, setUser] = useState([]);
+  const history = useHistory();
 
   const [serverError, setServerError] = useState("");
-
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -91,7 +92,7 @@ const Login = (props) => {
         console.log("rh: login success: res ", res);
         localStorage.setItem("authToken", res.data.token);
         console.log(res.data.token);
-        props.history.push("/protected");
+        history.push("/protected");
       })
       .catch((err) => {
         console.error("rh: login failed: err:", err.message);
