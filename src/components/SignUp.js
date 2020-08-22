@@ -175,12 +175,10 @@ const SignUp = () => {
           </Error>
         </label>
       </div>
-      <div className="btn-wrapper">
-        <Link to="/">
-          <Button disabled={buttonDisabled}>Sign Up</Button>
-          <p>Already have an account?</p>
-        </Link>
-      </div>
+      <Button disabled={buttonDisabled}>Sign Up</Button>
+      <Link to="/">
+        <p>Already have an account?</p>
+      </Link>
     </form>
   );
 };
