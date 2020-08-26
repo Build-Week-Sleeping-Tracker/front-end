@@ -39,7 +39,9 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         error: null,
-        sleep: action.payload,
+        sleep: state.sleep.filter((item) => {
+          return item.id !== action.payload;
+        }),
       };
     case FETCH_FAILURE:
       return {
