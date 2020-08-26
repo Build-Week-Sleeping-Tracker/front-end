@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosWithAuth } from "./utils/axiosWithAuth";
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
@@ -8,7 +8,7 @@ export const FETCH_FAILURE = "FETCH_FAILURE";
 export const fetchSleep = () => (dispatch) => {
   dispatch({ type: FETCH_START });
 
-  axiosAuth()
+  axiosWithAuth()
     .get("/api/sleep")
     .then((res) => {
       console.log("get success", res.data);
@@ -30,7 +30,7 @@ export const fetchSleep = () => (dispatch) => {
   export const addSleep = (sleep) => (dispatch) => {
     dispatch({ type: ADD_START });
 
-    axiosAuth()
+    axiosWithAuth()
       .post(`/api/sleep${id}`, sleep)
       .then((res) => {
         console.log("post success", res.data);
@@ -50,7 +50,7 @@ export const fetchSleep = () => (dispatch) => {
   export const updateSleep = (sleep$) => (dispatch) => {
     dispatch({ type: UPDATE_START });
 
-    axiosAuth()
+    axiosWithAuth()
       .put(`/api/sleep/${id}`, sleep)
       .then((res) => {
         console.log("put success", res.data);
@@ -70,7 +70,7 @@ export const fetchSleep = () => (dispatch) => {
   export const deleteSleep = (sleep) => (dispatch) => {
     dispatch({ type: DELETE_START });
 
-    axiosAuth()
+    axiosWithAuth()
       .delete(`/api/sleep/${id}`, sleep)
       .then((res) => {
         console.log("delete success", res.data);
