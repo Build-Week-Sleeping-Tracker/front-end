@@ -1,41 +1,8 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
-<<<<<<< HEAD
-import styled from 'styled-components';
-
-const Input = styled.input`
-
-    border: 3px solid #39869D;
-    border-radius: 20px;
-    outline: none;
-    height: 30px;
-    width: 250px;
-    font-size: 1.2rem;
-    padding: 3px 12px;
-    margin: 12px 0px;
-`
-
-const Button = styled.button`
-
-    background-color: #39869D;
-    border-radius: 20px; 
-    padding: 5px 32px;
-    font-size: 1.2rem;
-    color: white;
-    margin: 24px 0px;
-
-`
-
-const Error = styled.div`
-
-    margin: 0px 12px;
-    color: red;
-`
-=======
 import { Link } from "react-router-dom";
 import styled from "styled-components";
->>>>>>> e8e29824c144dc93f426e63fa191be28a31a7db1
 
 const SignUp = () => {
   const [user, setUser] = useState([]);
