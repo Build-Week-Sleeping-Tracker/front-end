@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { Link } from "react-router-dom";
 
-const HomePage = (props) => {
+const HomePage = () => {
   const [isClicked, setIsClicked] = useState(false);
 
   const toggleIsClicked = () => {
@@ -17,7 +17,7 @@ const HomePage = (props) => {
     <>
       <Title>
         <h3>Login</h3>
-        <Login props={props} />
+        <Login />
       </Title>
       <Title>
         <h3>Don't have an Account?</h3>
