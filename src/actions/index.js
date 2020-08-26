@@ -3,61 +3,82 @@ import axios from "axios";
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
-export const ADD_DATA = "ADD_DATA";
-export const UPDATE_DATA = "UPDATE_DATA";
-export const DELETE_DATA = "DELETE_DATA";
 
-export const fetchData = () => (dispatch) => {
+// get = read
+export const fetchSleep = () => (dispatch) => {
   dispatch({ type: FETCH_START });
 
-  axios
-    .get("https://webpt15-sleep-tracker-api.herokuapp.com/api/sleep")
+  axiosAuth()
+    .get("/api/sleep")
     .then((res) => {
-      //   console.log(res.data);
+      console.log("get success", res.data);
       dispatch({
         type: FETCH_SUCCESS,
         payload: res.data,
       });
     })
-
-    .post("https://webpt15-sleep-tracker-api.herokuapp.com/api/sleep")
-    .then((res) => {
-      //   console.log(res.data);
-      dispatch({
-        type: UPDATE_DATA,
-        payload: res.data,
-      });
-    })
-
-    .put(
-      "https://webpt15-sleep-tracker-api.herokuapp.com/api/sleep/:id",
-      updateData
-    )
-    .then((res) => {
-      //   console.log(res.data);
-      dispatch({
-        type: ADD_DATA,
-        payload: res.data,
-      });
-    })
-
-    .delete(
-      "https://webpt15-sleep-tracker-api.herokuapp.com/api/sleep/:id",
-      deleteData
-    )
-    .then((res) => {
-      //   console.log(res.data);
-      dispatch({
-        type: DELETE_DATA,
-        payload: res.data,
-      });
-    })
-
     .catch((err) => {
-      console.log(err.message);
-      dispatch({
-        type: FETCH_FAILURE,
-        payload: err.message,
-      });
+      console.log("error", err);
+      dispatch({ type: FETCH_FAILURE, payload: err });
     });
+
+  // post = create
+  export const ADD_START = "ADD_START";
+  export const ADD_SUCCESS = "ADD_SUCCESS";
+  export const ADD_FAILURE = "ADD_FAILURE";
+
+  export const addSleep = (sleep) => (dispatch) => {
+    dispatch({ type: ADD_START });
+
+    axiosAuth()
+      .post(`/api/sleep${id}`, sleep)
+      .then((res) => {
+        console.log("post success", res.data);
+        dispatch({ type: ADD_SUCCESS, payload: res.data });
+      })
+      .catch((err) => {
+        console.log("error", err);
+        dispatch({ type: ADD_FAILURE, payload: err });
+      });
+  };
+
+  // put = update
+  export const UPDATE_START = "UPDATE_START";
+  export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
+  export const UPDATE_FAILURE = "UPDATE_FAILURE";
+
+  export const updateSleep = (sleep$) => (dispatch) => {
+    dispatch({ type: UPDATE_START });
+
+    axiosAuth()
+      .put(`/api/sleep/${id}`, sleep)
+      .then((res) => {
+        console.log("put success", res.data);
+        dispatch({ type: UPDATE_SUCCESS, payload: res.data });
+      })
+      .catch((err) => {
+        console.log("error", err);
+        dispatch({ type: UPDATE_FAILURE, payload: err });
+      });
+  };
+
+  // delete = delete
+  export const DELETE_START = "DELETE_START";
+  export const DELETE_SUCCESS = "DELETE_SUCCESS";
+  export const DELETE_FAILURE = "DELETE_FAILURE";
+
+  export const deleteSleep = (sleep) => (dispatch) => {
+    dispatch({ type: DELETE_START });
+
+    axiosAuth()
+      .delete(`/api/sleep/${id}`, sleep)
+      .then((res) => {
+        console.log("delete success", res.data);
+        dispatch({ type: DELETE_SUCCESS, payload: res.data });
+      })
+      .catch((err) => {
+        console.log("error", err);
+        dispatch({ type: DELETE_FAILURE, payload: err });
+      });
+  };
 };
