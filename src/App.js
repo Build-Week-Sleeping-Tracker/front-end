@@ -14,19 +14,24 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
+import NavBar from "./components/NavBar";
 
 const Wrapper = styled.div`
     
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: baseline;
+  height: 85vh;
+  background-color: black;
+  padding: 60px 0px;
 `;
 
 const Title = styled.div`
 
   margin: 0px 12px;
   font-size: 24px;
-  color: #282c34;
+  color: #39869D;
 
 `
 
@@ -34,8 +39,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
-          <h2>Sleep Tracker App</h2>
+        <header>
+          <NavBar />
         </header>
         <Wrapper>
           <div>
