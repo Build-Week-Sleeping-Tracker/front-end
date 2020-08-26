@@ -9,7 +9,7 @@ export const fetchSleep = () => (dispatch) => {
   dispatch({ type: FETCH_START });
 
   axiosAuth()
-    .get("https://webpt15-sleep-tracker-api.herokuapp.com/api/sleep")
+    .get("/api/sleep")
     .then((res) => {
       console.log("get success", res.data);
       dispatch({
@@ -31,10 +31,7 @@ export const fetchSleep = () => (dispatch) => {
     dispatch({ type: ADD_START });
 
     axiosAuth()
-      .post(
-        `https://webpt15-sleep-tracker-api.herokuapp.com/api/sleep${id}`,
-        sleep
-      )
+      .post(`/api/sleep${id}`, sleep)
       .then((res) => {
         console.log("post success", res.data);
         dispatch({ type: ADD_SUCCESS, payload: res.data });
@@ -54,10 +51,7 @@ export const fetchSleep = () => (dispatch) => {
     dispatch({ type: UPDATE_START });
 
     axiosAuth()
-      .put(
-        `https://webpt15-sleep-tracker-api.herokuapp.com/api/sleep/${id}`,
-        sleep
-      )
+      .put(`/api/sleep/${id}`, sleep)
       .then((res) => {
         console.log("put success", res.data);
         dispatch({ type: UPDATE_SUCCESS, payload: res.data });
@@ -77,10 +71,7 @@ export const fetchSleep = () => (dispatch) => {
     dispatch({ type: DELETE_START });
 
     axiosAuth()
-      .delete(
-        `https://webpt15-sleep-tracker-api.herokuapp.com/api/sleep/${id}`,
-        sleep
-      )
+      .delete(`/api/sleep/${id}`, sleep)
       .then((res) => {
         console.log("delete success", res.data);
         dispatch({ type: DELETE_SUCCESS, payload: res.data });
