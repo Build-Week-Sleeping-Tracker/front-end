@@ -32,7 +32,7 @@ const SleepForm = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    sleep: state.sleep,
+    entries: state.entries,
     isFetching: state.isFetching,
     error: state.error,
   };

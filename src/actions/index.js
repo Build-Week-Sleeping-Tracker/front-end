@@ -27,11 +27,11 @@ export const fetchSleep = () => (dispatch) => {
   export const ADD_SUCCESS = "ADD_SUCCESS";
   export const ADD_FAILURE = "ADD_FAILURE";
 
-  export const addSleep = (sleep) => (dispatch) => {
+  export const addSleep = (entry) => (dispatch) => {
     dispatch({ type: ADD_START });
 
     axiosWithAuth()
-      .post(`/api/sleep${id}`, sleep)
+      .post(`/api/sleep${id}`, entry)
       .then((res) => {
         console.log("post success", res.data);
         dispatch({ type: ADD_SUCCESS, payload: res.data });
@@ -47,11 +47,11 @@ export const fetchSleep = () => (dispatch) => {
   export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
   export const UPDATE_FAILURE = "UPDATE_FAILURE";
 
-  export const updateSleep = (sleep$) => (dispatch) => {
+  export const updateSleep = (entries) => (dispatch) => {
     dispatch({ type: UPDATE_START });
 
     axiosWithAuth()
-      .put(`/api/sleep/${id}`, sleep)
+      .put(`/api/sleep/${id}`, entry)
       .then((res) => {
         console.log("put success", res.data);
         dispatch({ type: UPDATE_SUCCESS, payload: res.data });
@@ -67,11 +67,11 @@ export const fetchSleep = () => (dispatch) => {
   export const DELETE_SUCCESS = "DELETE_SUCCESS";
   export const DELETE_FAILURE = "DELETE_FAILURE";
 
-  export const deleteSleep = (sleep) => (dispatch) => {
+  export const deleteSleep = (entry) => (dispatch) => {
     dispatch({ type: DELETE_START });
 
     axiosWithAuth()
-      .delete(`/api/sleep/${id}`, sleep)
+      .delete(`/api/sleep/${id}`, entry)
       .then((res) => {
         console.log("delete success", res.data);
         dispatch({ type: DELETE_SUCCESS, payload: res.data });

@@ -19,9 +19,12 @@ import {
 
 const initialState = {
   isFetching: false,
-  fetchError: null,
-  sleep: [], // need an empty array so that the .map has somewhere to place its new array
-  user_id: "",
+  isPosting: false,
+  isPutting: false,
+  isDeleting: false,
+  Error: null,
+  entries: [], // need an empty array so that the .map has somewhere to place its new array
+  id: "",
 };
 
 export const Reducer = (state = initialState, action) => {
@@ -32,14 +35,14 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isFetching: true,
         error: null,
-        sleep: [],
+        entries: [],
       };
     case FETCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
         error: null,
-        sleep: state.sleep.filter((item) => {
+        entries: state.sleep.filter((item) => {
           return item.id !== action.payload;
         }),
       };
@@ -48,76 +51,76 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         error: action.payload,
-        sleep: [],
+        entries: [],
       };
 
     // axios.post = create
     case ADD_START:
       return {
         ...state,
-        isFetching: true,
+        isPosting: true,
         error: null,
-        sleep: [],
+        entries: [],
       };
     case ADD_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        isPosting: false,
         error: null,
-        sleep: action.payload,
+        entries: action.payload,
       };
     case ADD_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        isPosting: false,
         error: action.payload,
-        sleep: [],
+        entries: [],
       };
 
     // axios.put = update
     case UPDATE_START:
       return {
         ...state,
-        isFetching: true,
+        isPutting: true,
         error: null,
-        sleep: [],
+        entries: [],
       };
     case UPDATE_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        isPutting: false,
         error: null,
-        sleep: action.payload,
+        entries: action.payload,
       };
     case UPDATE_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        isPutting: false,
         error: action.payload,
-        sleep: [],
+        entries: [],
       };
 
     // axios.delete = delete
     case DELETE_START:
       return {
         ...state,
-        isFetching: true,
+        isDeleting: true,
         error: null,
-        sleep: [],
+        entries: [],
       };
     case DELETE_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        isDeleting: false,
         error: null,
-        sleep: action.payload,
+        entries: action.payload,
       };
     case DELETE_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        isDeleting: false,
         error: action.payload,
-        sleep: [],
+        entries: [],
       };
 
     default:
