@@ -37,6 +37,8 @@ const EntryForm = () => {
 
     const start_date = `${data.start_date_picker} ${data.start_time}`;
     const end_date = `${data.end_date_picker} ${data.end_time}`;
+    const before_sleep_mood = parseInt(data.start_mood);
+    const after_sleep_mood = parseInt(data.after_sleep_mood);
 
     console.log("THIS IS STUFF THAT SUCKS", data);
     console.log("formatted", start_date, end_date);
@@ -47,8 +49,8 @@ const EntryForm = () => {
         sleep_end: end_date,
         user_id: data.user_id,
         moods: {
-          before_sleep: data.start_mood,
-          after_sleep: data.end_mood,
+          before_sleep: before_sleep_mood,
+          after_sleep: after_sleep_mood,
           daytime: data.overall_mood,
         },
       })
