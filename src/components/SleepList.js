@@ -11,7 +11,7 @@ const SleepList = (props) => {
 
   return (
     <div>
-      {props.sleep.map((entry) => (
+      {props.entries.map((entry) => (
         <SleepCard entry={entry} />
       ))}
     </div>
@@ -29,8 +29,8 @@ const mapStateToProps = (state) => {
 const mapStateToDispatch = {
   fetchSleep,
   addSleep,
-  updateSleep,
-  deleteSleep,
+  //   updateSleep,
+  //   deleteSleep,
 };
 
 export default connect(mapStateToProps, mapStateToDispatch)(SleepList);

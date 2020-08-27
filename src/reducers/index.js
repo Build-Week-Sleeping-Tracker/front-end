@@ -113,7 +113,9 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isDeleting: false,
         error: null,
-        entries: action.payload,
+        entries: state.entries.filter((item) => {
+          return item.id !== action.payload;
+        }),
       };
     case DELETE_FAILURE:
       return {
