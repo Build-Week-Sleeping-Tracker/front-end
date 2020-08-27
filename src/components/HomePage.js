@@ -6,6 +6,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const toggleIsClicked = () => {
+    setIsClicked(!isClicked);
+    console.log(isClicked);
+  };
+
   return (
     <>
       <Title>
@@ -15,7 +22,7 @@ const HomePage = () => {
       <Title>
         <h3>Don't have an Account?</h3>
         <Link to="/signup">
-          <Button>Sign Up Here!</Button>
+          <Button onClick={toggleIsClicked}>Sign Up Here!</Button>
         </Link>
       </Title>
     </>
@@ -28,11 +35,11 @@ const Title = styled.div`
   margin: 0px 12px;
   font-size: 24px;
   font-family: sans-serif;
-  color: #39869d;
+  color: #39869D;
 `;
 
 const Button = styled.button`
-  background-color: #39869d;
+  background-color: #39869D;
   border-radius: 20px;
   padding: 5px 32px;
   font-size: 1.2rem;
