@@ -3,7 +3,9 @@ import "../App.css";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import moment from "moment";
+import { fetchSleep } from "../actions";
+import { connect } from "react-redux";
+
 import {
   faAngry,
   faMeh,
@@ -12,7 +14,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-const EntryForm = () => {
+const EntryForm = (props) => {
+  console.log("this is my props for entryform", props);
   const [entry, setEntry] = useState([]);
   const [entryData, setEntryData] = useState({
     sleep_start: null,
@@ -28,35 +31,32 @@ const EntryForm = () => {
   const { handleSubmit, register } = useForm();
 
   const onSubmit = (data) => {
-    // const start_date = moment(
-    //   `${data.start_date_picker} ${data.start_time}`
-    // ).format("X");
-    // const end_date = moment(`${data.end_date_picker} ${data.end_time}`).format(
-    //   "X"
-    // );
+    const stored = {
+      start_date: `${data.start_date_picker} ${data.start_time}`,
+      end_date: `${data.end_date_picker} ${data.end_time}`,
+      before_sleep_mood: parseInt(data.start_mood),
+      after_sleep_mood: parseInt(data.end_mood),
+      daytime_mood: parseInt(data.overall_mood),
+    };
 
-    const start_date = `${data.start_date_picker} ${data.start_time}`;
-    const end_date = `${data.end_date_picker} ${data.end_time}`;
-    const before_sleep_mood = parseInt(data.start_mood);
-    const after_sleep_mood = parseInt(data.after_sleep_mood);
-
-    console.log("THIS IS STUFF THAT SUCKS", data);
-    console.log("formatted", start_date, end_date);
+    console.log("Form Data being posted", data);
+    console.log("formatted", stored.start_date, stored.end_date);
 
     axiosWithAuth()
       .post("/api/sleep", {
-        sleep_start: start_date,
-        sleep_end: end_date,
+        sleep_start: stored.start_date,
+        sleep_end: stored.end_date,
         user_id: data.user_id,
         moods: {
-          before_sleep: before_sleep_mood,
-          after_sleep: after_sleep_mood,
-          daytime: data.overall_mood,
+          before_sleep: stored.before_sleep_mood,
+          after_sleep: stored.after_sleep_mood,
+          daytime: stored.daytime_mood,
         },
       })
       .then((res) => {
         console.log("rh: login success: res ", res);
         setEntry(res.data);
+        // fetchSleep();
       })
       .catch((err) => console.error(err.response.data));
   };
@@ -241,7 +241,22 @@ const EntryForm = () => {
   );
 };
 
-export default EntryForm;
+const mapStateToProps = (state) => {
+  return {
+    entries: state.entries,
+    isFetching: state.isFetching,
+    error: state.error,
+  };
+};
+
+const mapStateToDispatch = {
+  fetchSleep,
+  // addSleep,
+  //   updateSleep,
+  //   deleteSleep,
+};
+
+export default connect(mapStateToProps, mapStateToDispatch)(EntryForm);
 
 const Container = styled.div`
   display: flex;

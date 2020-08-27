@@ -13,20 +13,25 @@ import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
+import NavBar from "./components/NavBar";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: baseline;
+  height: 85vh;
+  background-color: black;
+  padding: 60px 0px;
 `;
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
-          <h2>Sleep Tracker App</h2>
+        <header>
+          <NavBar />
         </header>
         <Wrapper>
           <div>
