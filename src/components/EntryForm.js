@@ -28,14 +28,20 @@ const EntryForm = () => {
   const { handleSubmit, register } = useForm();
 
   const onSubmit = (data) => {
-    const date = moment(`${data.date_picker} ${data.time}`).format("X");
-    console.log("formatted", date);
+    const start_date = moment(
+      `${data.start_date_picker} ${data.start_time}`
+    ).format("X");
+    const end_date = moment(`${data.end_date_picker} ${data.end_time}`).format(
+      "X"
+    );
+    console.log("formatted", start_date, end_date);
 
     console.log("THIS IS STUFF THAT SUCKS", data);
 
     axiosWithAuth()
       .post("/api/sleep", {
-        sleep_start: date,
+        sleep_start: start_date,
+        sleep_end: end_date,
         user_id: data.user_id,
       })
       .then((res) => {
@@ -52,110 +58,173 @@ const EntryForm = () => {
         <div className="datediv">
           <h3>Start Date and Time</h3>
           <input
-            id="date_picker"
+            id="start_date_picker"
             ref={register}
             type="date"
-            name="date_picker"
+            name="start_date_picker"
             placeholder="HH:MM"
           />
 
           <label htmlFor="time">Time: </label>
           <input
-            name="time"
+            name="start_time"
             type="time"
             defaultValue={entryData.sleep_start}
             ref={register}
           />
           <Container className="container">
-            <EmojiWrap className="emoji-wrapper">
-              <FontAwesomeIcon icon={faAngry} />
-              <input type="radio" id="angry" name="angry" value={1} />
-            </EmojiWrap>
-            <EmojiWrap className="emoji-wrapper">
-              <FontAwesomeIcon icon={faMeh} />
-              <input type="radio" id="meh" name="meh" value={2} />
-            </EmojiWrap>
-            <EmojiWrap className="emoji-wrapper">
-              <FontAwesomeIcon icon={faSmile} />
-              <input type="radio" id="happy" name="happy" value={3} />
-            </EmojiWrap>
-            <EmojiWrap className="emoji-wrapper">
-              <FontAwesomeIcon icon={faGrinStars} />
-              <input
-                type="radio"
-                id="really_happy"
-                name="really_happy"
-                value={4}
-              />
-            </EmojiWrap>
+            <fieldset>
+              <EmojiWrap className="emoji-wrapper">
+                <FontAwesomeIcon icon={faAngry} />
+                <input
+                  type="radio"
+                  id="start_angry"
+                  name="start_mood"
+                  value={1}
+                  ref={register}
+                />
+              </EmojiWrap>
+              <EmojiWrap className="emoji-wrapper">
+                <FontAwesomeIcon icon={faMeh} />
+                <input
+                  type="radio"
+                  id="start_meh"
+                  name="start_mood"
+                  value={2}
+                  ref={register}
+                />
+              </EmojiWrap>
+              <EmojiWrap className="emoji-wrapper">
+                <FontAwesomeIcon icon={faSmile} />
+                <input
+                  type="radio"
+                  id="start_happy"
+                  name="start_mood"
+                  value={3}
+                  ref={register}
+                />
+              </EmojiWrap>
+              <EmojiWrap className="emoji-wrapper">
+                <FontAwesomeIcon icon={faGrinStars} />
+                <input
+                  type="radio"
+                  id="start_really_happy"
+                  name="start_mood"
+                  value={4}
+                  ref={register}
+                />
+              </EmojiWrap>
+            </fieldset>
           </Container>
         </div>
         <div className="datediv">
           <h3>End Date and Time</h3>
           <input
-            id="date_picker"
+            id="end_date_picker"
             ref={register}
             type="date"
-            name="date_picker"
+            name="end_date_picker"
             placeholder="HH:MM"
           />
 
           <label htmlFor="time">Time: </label>
           <input
-            name="time"
+            name="end_time"
             type="time"
             defaultValue={entryData.sleep_start}
             ref={register}
           />
           <Container className="container">
+            <FlexFieldSet>
+              <EmojiWrap className="emoji-wrapper">
+                <FontAwesomeIcon icon={faAngry} />
+                <input
+                  type="radio"
+                  id="end_angry"
+                  name="end_mood"
+                  value={1}
+                  ref={register}
+                />
+              </EmojiWrap>
+              <EmojiWrap className="emoji-wrapper">
+                <FontAwesomeIcon icon={faMeh} />
+                <input
+                  type="radio"
+                  id="end_meh"
+                  name="end_mood"
+                  value={2}
+                  ref={register}
+                />
+              </EmojiWrap>
+              <EmojiWrap className="emoji-wrapper">
+                <FontAwesomeIcon icon={faSmile} />
+                <input
+                  type="radio"
+                  id="end_happy"
+                  name="end_mood"
+                  value={3}
+                  ref={register}
+                />
+              </EmojiWrap>
+              <EmojiWrap className="emoji-wrapper">
+                <FontAwesomeIcon icon={faGrinStars} />
+                <input
+                  type="radio"
+                  id="end_really_happy"
+                  name="end_mood"
+                  value={4}
+                  ref={register}
+                />
+              </EmojiWrap>
+            </FlexFieldSet>
+          </Container>
+        </div>
+        <h3>Overall mood For the Day</h3>
+        <fieldset>
+          <Container className="container">
             <EmojiWrap className="emoji-wrapper">
               <FontAwesomeIcon icon={faAngry} />
-              <input type="radio" id="angry" name="angry" value={1} />
+              <input
+                type="radio"
+                id="overall_angry"
+                name="overall_mood"
+                value={1}
+                ref={register}
+              />
             </EmojiWrap>
             <EmojiWrap className="emoji-wrapper">
               <FontAwesomeIcon icon={faMeh} />
-              <input type="radio" id="meh" name="meh" value={2} />
+              <input
+                type="radio"
+                id="overall_meh"
+                name="overall_mood"
+                value={2}
+                ref={register}
+              />
             </EmojiWrap>
             <EmojiWrap className="emoji-wrapper">
               <FontAwesomeIcon icon={faSmile} />
-              <input type="radio" id="happy" name="happy" value={3} />
+              <input
+                type="radio"
+                id="overall_happy"
+                name="overall_mood"
+                value={3}
+                ref={register}
+              />
             </EmojiWrap>
             <EmojiWrap className="emoji-wrapper">
               <FontAwesomeIcon icon={faGrinStars} />
               <input
                 type="radio"
-                id="really_happy"
-                name="really_happy"
+                id="overall_really_happy"
+                name="overall_mood"
                 value={4}
+                ref={register}
               />
             </EmojiWrap>
           </Container>
-        </div>
-        <h3>Overall mood For the Day</h3>
-        <Container className="container">
-          <EmojiWrap className="emoji-wrapper">
-            <FontAwesomeIcon icon={faAngry} />
-            <input type="radio" id="angry" name="angry" value={1} />
-          </EmojiWrap>
-          <EmojiWrap className="emoji-wrapper">
-            <FontAwesomeIcon icon={faMeh} />
-            <input type="radio" id="meh" name="meh" value={2} />
-          </EmojiWrap>
-          <EmojiWrap className="emoji-wrapper">
-            <FontAwesomeIcon icon={faSmile} />
-            <input type="radio" id="happy" name="happy" value={3} />
-          </EmojiWrap>
-          <EmojiWrap className="emoji-wrapper">
-            <FontAwesomeIcon icon={faGrinStars} />
-            <input
-              type="radio"
-              id="really_happy"
-              name="really_happy"
-              value={4}
-            />
-          </EmojiWrap>
-        </Container>
-        <button type="submit">Submit Entry</button>
+        </fieldset>
+        <Button type="submit">Submit Entry</Button>
       </form>
     </CardContainer>
   );
@@ -176,7 +245,22 @@ const EmojiWrap = styled.div`
 
 const CardContainer = styled.div`
   border: 1px solid black;
+  border-radius: 20px;
   margin: 25px;
   padding: 10px;
   text-align: center;
+  background-color: #d1cbcb;
+`;
+
+const FlexFieldSet = styled.fieldset`
+  display: inline-block;
+`;
+
+const Button = styled.button`
+  background-color: #282c34;
+  border-radius: 20px;
+  padding: 5px 32px;
+  font-size: 1.2rem;
+  color: white;
+  margin: 24px 0px;
 `;
