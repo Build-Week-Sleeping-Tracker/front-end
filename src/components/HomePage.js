@@ -34,14 +34,16 @@ export default HomePage;
 const Title = styled.div`
   margin: 0px 12px;
   font-size: 24px;
-  color: #282c34;
+  font-family: sans-serif;
+  color: #39869D;
 `;
 
 const Button = styled.button`
-  background-color: #282c34;
+  background-color: #39869D;
   border-radius: 20px;
   padding: 5px 32px;
   font-size: 1.2rem;
+  font-family: sans-serif;
   color: white;
   margin: 24px 0px;
 `;

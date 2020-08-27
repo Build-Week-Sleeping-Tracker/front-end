@@ -1,10 +1,5 @@
-
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-
-export const FETCH_START = "FETCH_START";
-export const FETCH_SUCCESS = "FETCH_SUCCESS";
-export const FETCH_FAILURE = "FETCH_FAILURE";
 
 
 // get = read
@@ -85,3 +80,4 @@ export const deleteSleep = (entry) => (dispatch) => {
       dispatch({ type: DELETE_FAILURE, payload: err });
     });
 };
+
