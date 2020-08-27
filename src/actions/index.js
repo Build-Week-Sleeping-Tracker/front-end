@@ -4,11 +4,7 @@ export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 
-// get = read
-export const fetchSleep = () => (dispatch) => {
-  dispatch({ type: FETCH_START });
-
-  axiosWithAuth()
+axiosWithAuth()
     .get("/api/sleep")
     .then((res) => {
       console.log("get success", res.data);
