@@ -141,7 +141,7 @@ const Login = (props) => {
 export default Login;
 
 const Input = styled.input`
-  border: 3px solid #282c34;
+  border: 3px solid #39869D;
   border-radius: 20px;
   outline: none;
   height: 30px;
@@ -152,7 +152,7 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  background-color: #282c34;
+  background-color: #39869D;
   border-radius: 20px;
   padding: 5px 32px;
   font-size: 1.2rem;
