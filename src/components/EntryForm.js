@@ -15,7 +15,7 @@ import styled from "styled-components";
 const EntryForm = () => {
   const [entry, setEntry] = useState([]);
   const [entryData, setEntryData] = useState({
-    sleep_start: "null",
+    sleep_start: null,
     sleep_end: null,
     user_id: 1,
     moods: {
@@ -28,26 +28,35 @@ const EntryForm = () => {
   const { handleSubmit, register } = useForm();
 
   const onSubmit = (data) => {
-    const start_date = moment(
-      `${data.start_date_picker} ${data.start_time}`
-    ).format("X");
-    const end_date = moment(`${data.end_date_picker} ${data.end_time}`).format(
-      "X"
-    );
-    console.log("formatted", start_date, end_date);
+    // const start_date = moment(
+    //   `${data.start_date_picker} ${data.start_time}`
+    // ).format("X");
+    // const end_date = moment(`${data.end_date_picker} ${data.end_time}`).format(
+    //   "X"
+    // );
+
+    const start_date = `${data.start_date_picker} ${data.start_time}`;
+    const end_date = `${data.end_date_picker} ${data.end_time}`;
 
     console.log("THIS IS STUFF THAT SUCKS", data);
+    console.log("formatted", start_date, end_date);
 
     axiosWithAuth()
       .post("/api/sleep", {
         sleep_start: start_date,
         sleep_end: end_date,
         user_id: data.user_id,
+        moods: {
+          before_sleep: data.start_mood,
+          after_sleep: data.end_mood,
+          daytime: data.overall_mood,
+        },
       })
       .then((res) => {
+        console.log("rh: login success: res ", res);
         setEntry(res.data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err.response.data));
   };
 
   return (
