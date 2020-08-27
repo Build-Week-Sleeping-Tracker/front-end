@@ -147,6 +147,7 @@ const Input = styled.input`
   height: 30px;
   width: 250px;
   font-size: 1.2rem;
+  font-family: sans-serif;
   padding: 3px 12px;
   margin: 12px 0px;
 `;
@@ -156,6 +157,7 @@ const Button = styled.button`
   border-radius: 20px;
   padding: 5px 32px;
   font-size: 1.2rem;
+  font-family: sans-serif;
   color: white;
   margin: 24px 0px;
 `;

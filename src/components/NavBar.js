@@ -1,52 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-const Navbar = styled.div`
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    background-color: gray;
-    height: 15vh;
-`
-
-const Navtitle = styled.h1`
-
-    border: 2px solid green;
-    color: white;
-    font-size: 2.5rem;
-
-`
-
-const Navlist = styled.ul`
-
-    border: 1px solid green;
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-
-`
-
-const Navitem = styled.li`
-
-   margin: 0px 30px;
-   font-size: 2rem;
-
-`
-
-const Navlinks = styled.a`
-
-    text-decoration: none;
-    color: white; 
-   
-    &:hover {
-
-        text-decoration: none;
-    
-    }
-` 
-
 const NavBar = () => {
 
     return (
@@ -56,9 +10,9 @@ const NavBar = () => {
             <nav>
                 <Navlist>
                     <Navitem><Navlinks href="/home">Home</Navlinks></Navitem>
-                    <Navitem><Navlinks href="#">About</Navlinks></Navitem>
-                    <Navitem><Navlinks href="#">Login</Navlinks></Navitem>
-                    <Navitem><Navlinks href="#">Sign Up</Navlinks></Navitem>
+                    <Navitem><Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/about.html">About</Navlinks></Navitem>
+                    <Navitem><Navlinks href="/login">Login</Navlinks></Navitem>
+                    <Navitem><Navlinks href="/signup">Sign Up</Navlinks></Navitem>
                 </Navlist>
             </nav>        
         </Navbar>
@@ -68,3 +22,43 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+const Navbar = styled.div`
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #666666;
+    height: 15vh;
+`;
+
+const Navtitle = styled.h1`
+    color: white;
+    font-size: 2.5rem;
+    font-family: sans-serif;
+    font-weight: normal;
+`;
+
+const Navlist = styled.ul`
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+`;
+
+const Navitem = styled.li`
+    margin: 0px 30px;
+    font-size: 2rem;
+    font-family: sans-serif;
+`;
+
+const Navlinks = styled.a`
+    text-decoration: none;
+    color: white; 
+   
+    &:hover {
+
+        text-decoration: none;
+    
+    }
+`;
