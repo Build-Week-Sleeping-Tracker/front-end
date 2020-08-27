@@ -1,10 +1,17 @@
-import { axiosWithAuth } from "./utils/axiosWithAuth";
+
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 
-axiosWithAuth()
+
+// get = read
+export const fetchSleep = () => (dispatch) => {
+  dispatch({ type: FETCH_START });
+
+  axiosWithAuth()
     .get("/api/sleep")
     .then((res) => {
       console.log("get success", res.data);
@@ -14,8 +21,8 @@ axiosWithAuth()
       });
     })
     .catch((err) => {
-      console.log("error", err);
-      dispatch({ type: FETCH_FAILURE, payload: err });
+      console.log("error", err.message);
+      dispatch({ type: FETCH_FAILURE, payload: err.message });
     });
 };
 
