@@ -6,14 +6,14 @@ import SleepList from "./SleepList";
 const Dashboard = () => {
   const [entries, setEntries] = useState([]);
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get("/api/sleep")
-      .then((res) => {
-        console.log(res.data);
-        setEntries(res.data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     .get("/api/sleep")
+  //     .then((res) => {
+  //       console.log("rh: Dashboard.js:", res.data);
+  //       setEntries(res.data);
+  //     });
+  // }, []);
 
   return (
     <>
