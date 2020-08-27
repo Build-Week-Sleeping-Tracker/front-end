@@ -89,7 +89,7 @@ const Login = (props) => {
         credentials
       )
       .then((res) => {
-        console.log("rh: login success: res ", res);
+        console.log("rh: login success: res ", res.data);
         localStorage.setItem("authToken", res.data.token);
         console.log(res.data.token);
         history.push("/protected");
