@@ -1,31 +1,31 @@
-// import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-// export const FETCH_START = "FETCH_START";
-// export const FETCH_SUCCESS = "FETCH_SUCCESS";
-// export const FETCH_FAILURE = "FETCH_FAILURE";
+export const FETCH_START = "FETCH_START";
+export const FETCH_SUCCESS = "FETCH_SUCCESS";
+export const FETCH_FAILURE = "FETCH_FAILURE";
 
-// // get = read
-// export const fetchSleep = () => (dispatch) => {
-//   dispatch({ type: FETCH_START });
+// get = read
+export const fetchSleep = () => (dispatch) => {
+  dispatch({ type: FETCH_START });
 
-//   axiosWithAuth()
-//     .get("/api/sleep")
-//     .then((res) => {
-//       console.log("get success", res.data);
-//       dispatch({
-//         type: FETCH_SUCCESS,
-//         payload: res.data,
-//       });
-//     })
-//     .catch((err) => {
-//       console.log("error", err);
-//       dispatch({ type: FETCH_FAILURE, payload: err });
-//     });
-// };
-// // post = create
-// export const ADD_START = "ADD_START";
-// export const ADD_SUCCESS = "ADD_SUCCESS";
-// export const ADD_FAILURE = "ADD_FAILURE";
+  axiosWithAuth()
+    .get("/api/sleep")
+    .then((res) => {
+      console.log("get success", res.data);
+      dispatch({
+        type: FETCH_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      console.log("error", err.message);
+      dispatch({ type: FETCH_FAILURE, payload: err.message });
+    });
+};
+// post = create
+export const ADD_START = "ADD_START";
+export const ADD_SUCCESS = "ADD_SUCCESS";
+export const ADD_FAILURE = "ADD_FAILURE";
 
 // export const addSleep = (sleep) => (dispatch) => {
 //   dispatch({ type: ADD_START });
@@ -42,10 +42,10 @@
 //     });
 // };
 
-// // put = update
-// export const UPDATE_START = "UPDATE_START";
-// export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
-// export const UPDATE_FAILURE = "UPDATE_FAILURE";
+// put = update
+export const UPDATE_START = "UPDATE_START";
+export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
+export const UPDATE_FAILURE = "UPDATE_FAILURE";
 
 // export const updateSleep = (sleep$) => (dispatch) => {
 //   dispatch({ type: UPDATE_START });
@@ -62,10 +62,10 @@
 //     });
 // };
 
-// // delete = delete
-// export const DELETE_START = "DELETE_START";
-// export const DELETE_SUCCESS = "DELETE_SUCCESS";
-// export const DELETE_FAILURE = "DELETE_FAILURE";
+// delete = delete
+export const DELETE_START = "DELETE_START";
+export const DELETE_SUCCESS = "DELETE_SUCCESS";
+export const DELETE_FAILURE = "DELETE_FAILURE";
 
 // export const deleteSleep = (sleep) => (dispatch) => {
 //   dispatch({ type: DELETE_START });
