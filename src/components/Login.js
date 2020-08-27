@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
-import styled from "styled-components";
+import styled from 'styled-components';
 import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
@@ -89,12 +89,9 @@ const Login = (props) => {
         credentials
       )
       .then((res) => {
-        console.log("rh: login success: res ", res);
+        console.log("rh: login success: res ", res.data);
         localStorage.setItem("authToken", res.data.token);
-        console.log(
-          "rh: Login.js: this is the auth token data",
-          res.data.token
-        );
+        console.log(res.data.token);
         history.push("/protected");
       })
       .catch((err) => {
@@ -144,7 +141,7 @@ const Login = (props) => {
 export default Login;
 
 const Input = styled.input`
-  border: 3px solid #39869d;
+  border: 3px solid #39869D;
   border-radius: 20px;
   outline: none;
   height: 30px;
@@ -156,7 +153,7 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  background-color: #39869d;
+  background-color: #39869D;
   border-radius: 20px;
   padding: 5px 32px;
   font-size: 1.2rem;

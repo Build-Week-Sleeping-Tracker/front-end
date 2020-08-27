@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import SleepCard from "./SleepCard";
+import { fetchSleep, addSleep } from "../actions";
 
 const SleepList = (props) => {
-  // useEffect(() => {
-  //   props.fetchSleep();
-  // }, []);
+  useEffect(() => {
+    props.fetchSleep();
+  }, []);
 
   return (
     <div>
@@ -26,8 +27,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapStateToDispatch = {
-  // fetchSleep,
-  // addSleep,
+  fetchSleep,
+  addSleep,
   //   updateSleep,
   //   deleteSleep,
 };
