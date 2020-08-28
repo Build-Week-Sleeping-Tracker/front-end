@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Navlink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 
@@ -21,7 +16,8 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: baseline;
-  height: 85vh;
+  height: 100%;
+  width: 100%;
   background-color: black;
   padding: 60px 0px;
 `;
@@ -29,7 +25,7 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div>
         <header>
           <NavBar />
         </header>
