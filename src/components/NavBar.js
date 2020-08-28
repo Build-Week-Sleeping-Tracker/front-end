@@ -87,7 +87,6 @@ const Icon = () => {
 }
 
 const LogoWrap = styled.div`
-    border: 1px solid red;
     width: 25vw;
     display: flex;
     flex-direction: row;
