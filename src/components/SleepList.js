@@ -5,6 +5,7 @@ import SleepCard from "./SleepCard";
 import { fetchSleep, addSleep } from "../actions";
 
 const SleepList = (props) => {
+  console.log("this the props", props);
   useEffect(() => {
     props.fetchSleep();
   }, []);
@@ -28,7 +29,7 @@ const mapStateToProps = (state) => {
 
 const mapStateToDispatch = {
   fetchSleep,
-  addSleep,
+  //   addSleep,
   //   updateSleep,
   //   deleteSleep,
 };
