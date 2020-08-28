@@ -3,7 +3,7 @@ import "../App.css";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Sleeplist from "./SleepList";
+import SleepList from "./SleepList";
 // import { fetchSleep } from "../actions";
 // import { connect } from "react-redux";
 
@@ -252,7 +252,7 @@ const EntryForm = () => {
         </form>
       </CardContainer>
       <FlexCards>
-        <Sleeplist entries={entry} />
+        <SleepList entries={entry} />
       </FlexCards>
     </>
   );

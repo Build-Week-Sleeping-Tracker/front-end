@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 import SleepCard from "./SleepCard";
 
@@ -18,18 +18,19 @@ const SleepList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isFetching: state.isFetching,
-    error: state.error,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     isFetching: state.isFetching,
+//     error: state.error,
+//   };
+// };
 
-const mapStateToDispatch = {
-  // fetchSleep,
-  // addSleep,
-  //   updateSleep,
-  //   deleteSleep,
-};
+// const mapStateToDispatch = {
+// fetchSleep,
+// addSleep,
+//   updateSleep,
+//   deleteSleep,
+// };
 
-export default connect(mapStateToProps, mapStateToDispatch)(SleepList);
+export default SleepList;
+// connect(mapStateToProps, mapStateToDispatch)(SleepList);
