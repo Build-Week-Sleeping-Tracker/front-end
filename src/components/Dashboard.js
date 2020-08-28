@@ -2,8 +2,6 @@ import React from "react";
 
 import EntryForm from "./EntryForm";
 
-import SleepList from "./SleepList";
-
 const Dashboard = () => {
   // useEffect(() => {
   //   axiosWithAuth()
