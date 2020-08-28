@@ -25,7 +25,6 @@ const initialState = {
   Error: null,
   entries: [], // need an empty array so that the .map has somewhere to place its new array
   id: "",
-<<<<<<< HEAD
   data: {
     sleep_start: null,
     sleep_end: null,
@@ -36,8 +35,6 @@ const initialState = {
       daytime: "",
     },
   },
-=======
->>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
 };
 
 export const Reducer = (state = initialState, action) => {
@@ -48,36 +45,22 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isFetching: true,
         error: null,
-<<<<<<< HEAD
-=======
-        entries: [],
->>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
       };
     case FETCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
         error: null,
-<<<<<<< HEAD
         entries: action.payload,
 
         // state.sleep.filter((item) => {
         //   return item.id !== action.payload;
-=======
-        entries: state.sleep.filter((item) => {
-          return item.id !== action.payload;
-        }),
->>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
       };
     case FETCH_FAILURE:
       return {
         ...state,
         isFetching: false,
         error: action.payload,
-<<<<<<< HEAD
-=======
-        entries: [],
->>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
       };
 
     // axios.post = create
@@ -86,11 +69,7 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isPosting: true,
         error: null,
-<<<<<<< HEAD
         data: action.payload,
-=======
-        entries: [],
->>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
       };
     case ADD_SUCCESS:
       return {
@@ -109,7 +88,6 @@ export const Reducer = (state = initialState, action) => {
 
     // axios.put = update
     case UPDATE_START:
-<<<<<<< HEAD
       return {
         ...state,
         isPutting: true,
@@ -126,24 +104,6 @@ export const Reducer = (state = initialState, action) => {
     case UPDATE_FAILURE:
       return {
         ...state,
-=======
-      return {
-        ...state,
-        isPutting: true,
-        error: null,
-        entries: [],
-      };
-    case UPDATE_SUCCESS:
-      return {
-        ...state,
-        isPutting: false,
-        error: null,
-        entries: action.payload,
-      };
-    case UPDATE_FAILURE:
-      return {
-        ...state,
->>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
         isPutting: false,
         error: action.payload,
         entries: [],
@@ -151,7 +111,6 @@ export const Reducer = (state = initialState, action) => {
 
     // axios.delete = delete
     case DELETE_START:
-<<<<<<< HEAD
       return {
         ...state,
         isDeleting: true,
@@ -161,17 +120,6 @@ export const Reducer = (state = initialState, action) => {
     case DELETE_SUCCESS:
       return {
         ...state,
-=======
-      return {
-        ...state,
-        isDeleting: true,
-        error: null,
-        entries: [],
-      };
-    case DELETE_SUCCESS:
-      return {
-        ...state,
->>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
         isDeleting: false,
         error: null,
         entries: state.entries.filter((item) => {
