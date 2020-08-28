@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Navlink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 
@@ -13,20 +8,26 @@ import Login from "./components/Login";
 import HomePage from "./components/HomePage";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
+import NavBar from "./components/NavBar";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: baseline;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  padding: 60px 0px;
 `;
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <h2>Sleep Tracker App</h2>
+      <div>
+        <header>
+          <NavBar />
         </header>
         <Wrapper>
           <div>
