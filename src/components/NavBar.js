@@ -6,8 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const NavBar = () => {
   return (
     <Navbar>
-      <FontAwesomeIcon icon={faBed} />
-      <Navtitle>Sleep Tracker</Navtitle>
+      <LogoWrap>
+        <Icon />
+        <Navtitle>Sleep Tracker</Navtitle>   
+      </LogoWrap>
       <nav>
         <Navlist>
           <Navitem>
@@ -68,3 +70,27 @@ const Navlinks = styled.a`
     text-decoration: none;
   }
 `;
+
+const BedIcon = styled(FontAwesomeIcon)`
+  color: white;
+`
+
+const Icon = () => {
+
+    return (
+        
+        <BedIcon 
+            icon={faBed}
+            size="2x"
+        />
+    );
+}
+
+const LogoWrap = styled.div`
+    border: 1px solid red;
+    width: 25vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+`
