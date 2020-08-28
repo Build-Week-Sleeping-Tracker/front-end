@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+<<<<<<< HEAD
 import { faBed } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -28,11 +29,33 @@ const NavBar = () => {
       </nav>
     </Navbar>
   );
+=======
+
+const NavBar = () => {
+
+    return (
+
+        <Navbar>
+            <Navtitle>Sleep Tracker</Navtitle>
+            <nav>
+                <Navlist>
+                    <Navitem><Navlinks href="/home">Home</Navlinks></Navitem>
+                    <Navitem><Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/about.html">About</Navlinks></Navitem>
+                    <Navitem><Navlinks href="/login">Login</Navlinks></Navitem>
+                    <Navitem><Navlinks href="/signup">Sign Up</Navlinks></Navitem>
+                </Navlist>
+            </nav>        
+        </Navbar>
+
+    )
+
+>>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
 };
 
 export default NavBar;
 
 const Navbar = styled.div`
+<<<<<<< HEAD
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -68,3 +91,43 @@ const Navlinks = styled.a`
     text-decoration: none;
   }
 `;
+=======
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #666666;
+    height: 15vh;
+`;
+
+const Navtitle = styled.h1`
+    color: white;
+    font-size: 2.5rem;
+    font-family: sans-serif;
+    font-weight: normal;
+`;
+
+const Navlist = styled.ul`
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+`;
+
+const Navitem = styled.li`
+    margin: 0px 30px;
+    font-size: 2rem;
+    font-family: sans-serif;
+`;
+
+const Navlinks = styled.a`
+    text-decoration: none;
+    color: white; 
+   
+    &:hover {
+
+        text-decoration: none;
+    
+    }
+`;
+>>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568

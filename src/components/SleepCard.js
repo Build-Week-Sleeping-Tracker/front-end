@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import styled from "styled-components";
 
 const SleepCard = (props) => {
@@ -12,12 +13,28 @@ const SleepCard = (props) => {
       <p>{`I slept for ${props.entry.sleep_time_total} hours`}</p>
       <p>{`My mood when I went to sleep was at a number ${props.entry.moods.before_sleep}`}</p>
     </StyledCard>
+=======
+
+const SleepCard = (props) => {
+  return (
+    <div>
+      <h3>{props.data.sleep_start}</h3>
+      <h3>{props.data.sleep_end}</h3>
+      {/* <h3>{props.data.sleep_time_total}</h3> */}
+      <h3>{}</h3>
+      <h3>{}</h3>
+      <h3>{}</h3>
+    </div>
+>>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
   );
 };
 
 export default SleepCard;
+<<<<<<< HEAD
 
 const StyledCard = styled.div`
   background-color: #d1cbcb;
   text-align: center;
 `;
+=======
+>>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568

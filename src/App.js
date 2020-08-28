@@ -16,8 +16,12 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: baseline;
+<<<<<<< HEAD
   height: 100%;
   width: 100%;
+=======
+  height: 85vh;
+>>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
   background-color: black;
   padding: 60px 0px;
 `;
@@ -25,7 +29,11 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Router>
+<<<<<<< HEAD
       <div>
+=======
+      <div className="App">
+>>>>>>> 56205a12e8a4fb582b8830132f53b78a3a7f1568
         <header>
           <NavBar />
         </header>
