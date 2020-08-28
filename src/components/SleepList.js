@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-
+import { fetchSleep } from "../actions";
 import SleepCard from "./SleepCard";
-import { fetchSleep, addSleep } from "../actions";
 
 const SleepList = (props) => {
-  console.log("this the props", props);
+  console.log("this is props sleeplist.js", props);
   useEffect(() => {
     props.fetchSleep();
   }, []);
@@ -29,7 +28,7 @@ const mapStateToProps = (state) => {
 
 const mapStateToDispatch = {
   fetchSleep,
-  //   addSleep,
+  // addSleep,
   //   updateSleep,
   //   deleteSleep,
 };

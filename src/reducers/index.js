@@ -25,6 +25,16 @@ const initialState = {
   Error: null,
   entries: [], // need an empty array so that the .map has somewhere to place its new array
   id: "",
+  data: {
+    sleep_start: null,
+    sleep_end: null,
+    user_id: "",
+    moods: {
+      before_sleep: "",
+      after_sleep: "",
+      daytime: "",
+    },
+  },
 };
 
 export const Reducer = (state = initialState, action) => {
@@ -35,7 +45,6 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isFetching: true,
         error: null,
-        entries: [],
       };
     case FETCH_SUCCESS:
       return {
@@ -43,13 +52,15 @@ export const Reducer = (state = initialState, action) => {
         isFetching: false,
         error: null,
         entries: action.payload,
+
+        // state.sleep.filter((item) => {
+        //   return item.id !== action.payload;
       };
     case FETCH_FAILURE:
       return {
         ...state,
         isFetching: false,
         error: action.payload,
-        entries: [],
       };
 
     // axios.post = create
@@ -58,7 +69,7 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isPosting: true,
         error: null,
-        entries: [],
+        data: action.payload,
       };
     case ADD_SUCCESS:
       return {

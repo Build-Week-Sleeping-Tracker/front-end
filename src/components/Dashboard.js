@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import React from "react";
+
 import EntryForm from "./EntryForm";
+
 import SleepList from "./SleepList";
 
 const Dashboard = () => {
-  const [entries, setEntries] = useState([]);
-
   // useEffect(() => {
   //   axiosWithAuth()
-  //     .get("/api/sleep")
+  //     .get("/sleep")
   //     .then((res) => {
-  //       console.log(res.data);
+  //       console.log("rh: Dashboard.js:", res.data);
   //       setEntries(res.data);
   //     });
   // }, []);
@@ -18,9 +17,6 @@ const Dashboard = () => {
   return (
     <>
       <EntryForm />
-      <SleepList />
-
-      {/* I think Ideally here should be a component with the ability to add a new entry which Aaron is working on. Plus we will make a get request returning data of all entries submitted by the user and with that we will return those using map to iterate through the data. */}
     </>
   );
 };
