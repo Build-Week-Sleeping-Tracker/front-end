@@ -56,22 +56,18 @@ const EntryForm = () => {
         },
       })
       .then((res) => {
-        console.log("rh: POST success: res ", res);
-        setEntry(res.data);
+        console.log("rh: created POST res ", res);
+        axiosWithAuth()
+          .get("/sleep")
+          .then((res) => {
+            console.log("GET RES ~!!!", res.data);
+            setEntry(res.data);
+          });
       })
-      .catch((err) => console.error(err.response.data));
+      .catch((err) => console.error(err.message));
 
     reset();
   };
-
-  useEffect(() => {
-    axiosWithAuth()
-      .get("/sleep")
-      .then((res) => {
-        console.log("this is get success entryform.js", res.data);
-        setEntry(res.data);
-      });
-  }, []);
 
   return (
     <>
