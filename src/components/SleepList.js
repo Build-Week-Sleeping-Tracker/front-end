@@ -1,17 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 import SleepCard from "./SleepCard";
+import { fetchSleep } from "../actions";
 
-const SleepList = (props) => {
-  console.log("this is props sleeplist.js", props);
-  // useEffect(() => {
-  //   props.fetchSleep();
-  // }, []);
+const SleepList = () => {
+    const dispatch = useDispatch();
+    const entries = useSelector(state => state.entries)
+
+  //console.log("this is props sleeplist.js", props);
+  useEffect(() => {
+    //dispatch(fetchSleep());
+  }, []);
 
   return (
     <div>
-      {props.entries.map((entry) => (
+      {entries.map((entry) => (
         <SleepCard entry={entry} />
       ))}
     </div>
@@ -32,4 +36,5 @@ const mapStateToDispatch = {
   //   deleteSleep,
 };
 
-export default connect(mapStateToProps, mapStateToDispatch)(SleepList);
+export default SleepList;
+//export default connect(mapStateToProps, mapStateToDispatch)(SleepList);

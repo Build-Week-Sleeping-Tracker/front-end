@@ -22,7 +22,7 @@ const initialState = {
   isPosting: false,
   isPutting: false,
   isDeleting: false,
-  Error: null,
+  stateError: null,
   entries: [], // need an empty array so that the .map has somewhere to place its new array
   id: "",
   data: {
@@ -74,14 +74,14 @@ export const Reducer = (state = initialState, action) => {
     case ADD_SUCCESS:
       return {
         ...state,
-        isPosting: false,
+        isFetching: false,
         error: null,
-        entries: action.payload,
+        entries: [...state.entries, action.payload],
       };
     case ADD_FAILURE:
       return {
         ...state,
-        isPosting: false,
+        isFetching: false,
         error: action.payload,
         entries: [],
       };
@@ -97,16 +97,20 @@ export const Reducer = (state = initialState, action) => {
     case UPDATE_SUCCESS:
       return {
         ...state,
-        isPutting: false,
+        isFetching: false,
         error: null,
-        entries: action.payload,
+        entries: state.entries.map(entry => {
+            if(entry.id === action.payload.id) {
+                return action.payload;
+            }
+            return entry;
+        }),
       };
     case UPDATE_FAILURE:
       return {
         ...state,
-        isPutting: false,
-        error: action.payload,
-        entries: [],
+        isFetching: false,
+        error: action.payload
       };
 
     // axios.delete = delete
@@ -120,18 +124,15 @@ export const Reducer = (state = initialState, action) => {
     case DELETE_SUCCESS:
       return {
         ...state,
-        isDeleting: false,
+        isFetching: false,
         error: null,
-        entries: state.entries.filter((item) => {
-          return item.id !== action.payload;
-        }),
+        entries: state.entries.filter(item => item.id !== action.payload),
       };
     case DELETE_FAILURE:
       return {
         ...state,
-        isDeleting: false,
+        isFetching: false,
         error: action.payload,
-        entries: [],
       };
 
     default:

@@ -14,10 +14,13 @@ import {
   faGrinStars,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { addSleep } from "../actions";
 
 const EntryForm = () => {
   // console.log("this is my props for entryform", props);
   const [entry, setEntry] = useState([]);
+  const dispatch = useDispatch();
 
   const [entryData, setEntryData] = useState({
     sleep_start: "0",
@@ -44,8 +47,7 @@ const EntryForm = () => {
     console.log("Form Data being posted", data);
     console.log("formatted", stored.start_date, stored.end_date);
 
-    axiosWithAuth()
-      .post("/sleep", {
+    dispatch(addSleep({
         sleep_start: stored.start_date,
         sleep_end: stored.end_date,
         user_id: data.user_id,
@@ -54,24 +56,19 @@ const EntryForm = () => {
           after_sleep: stored.after_sleep_mood,
           daytime: stored.daytime_mood,
         },
-      })
-      .then((res) => {
-        console.log("rh: POST success: res ", res);
-        setEntry(res.data);
-      })
-      .catch((err) => console.error(err.response.data));
+      }));
 
     reset();
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     axiosWithAuth()
       .get("/sleep")
       .then((res) => {
         console.log("this is get success entryform.js", res.data);
         setEntry(res.data);
       });
-  }, []);
+  }, []); */
 
   return (
     <>
@@ -251,9 +248,9 @@ const EntryForm = () => {
           <Button type="submit">Submit Entry</Button>
         </form>
       </CardContainer>
-      <FlexCards>
+      {/* <FlexCards>
         <Sleeplist entries={entry} />
-      </FlexCards>
+      </FlexCards> */}
     </>
   );
 };
