@@ -4,8 +4,8 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SleepList from "./SleepList";
-import { addSleep, fetchSleep } from "../actions";
-import { connect } from "react-redux";
+// import { fetchSleep } from "../actions";
+// import { connect } from "react-redux";
 
 import {
   faAngry,
@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-const EntryForm = (props) => {
+const EntryForm = () => {
   // console.log("this is my props for entryform", props);
   const [entry, setEntry] = useState([]);
 
@@ -40,8 +40,6 @@ const EntryForm = (props) => {
       after_sleep_mood: data.end_mood,
       daytime_mood: data.overall_mood,
     };
-
-    props.addSleep(stored);
 
     console.log("Form Data being posted", data);
     console.log("formatted", stored.start_date, stored.end_date);
@@ -256,24 +254,23 @@ const EntryForm = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    entries: state.entries,
-    isPosting: state.isPosting,
-    isFetching: state.isFetching,
-    error: state.error,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     entries: state.entries,
+//     isFetching: state.isFetching,
+//     error: state.error,
+//   };
+// };
 
-const mapStateToDispatch = {
-  fetchSleep,
-  addSleep,
-  // updateSleep,
-  // deleteSleep,
-};
+// const mapStateToDispatch = {
+//   fetchSleep,
+// addSleep,
+//   updateSleep,
+//   deleteSleep,
+// };
 
-export default connect(mapStateToProps, mapStateToDispatch)(EntryForm);
-// export default EntryForm;
+// export default connect(mapStateToProps, mapStateToDispatch)(EntryForm);
+export default EntryForm;
 
 const Container = styled.div`
   display: flex;

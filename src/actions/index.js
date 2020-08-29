@@ -42,7 +42,7 @@ export const addSleep = (entryData) => (dispatch) => {
     });
 };
 
-// // put = update
+// put = update
 export const UPDATE_START = "UPDATE_START";
 export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 export const UPDATE_FAILURE = "UPDATE_FAILURE";
@@ -62,7 +62,7 @@ export const UPDATE_FAILURE = "UPDATE_FAILURE";
 //     });
 // };
 
-// // delete = delete
+// delete = delete
 export const DELETE_START = "DELETE_START";
 export const DELETE_SUCCESS = "DELETE_SUCCESS";
 export const DELETE_FAILURE = "DELETE_FAILURE";
