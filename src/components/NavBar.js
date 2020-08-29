@@ -13,7 +13,7 @@ const NavBar = () => {
       <nav>
         <Navlist>
           <Navitem>
-            <Navlinks href="/home">Home</Navlinks>
+            <Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/index.html">Home</Navlinks>
           </Navitem>
           <Navitem>
             <Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/about.html">
