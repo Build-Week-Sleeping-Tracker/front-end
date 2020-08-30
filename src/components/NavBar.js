@@ -1,19 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { faBed } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBed } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
   return (
     <Navbar>
       <LogoWrap>
         <Icon />
-        <Navtitle>Sleep Tracker</Navtitle>   
+        <Navtitle>Sleep Tracker</Navtitle>
       </LogoWrap>
+
       <nav>
         <Navlist>
           <Navitem>
-            <Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/index.html">Home</Navlinks>
+            <Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/index.html">
+              Home
+            </Navlinks>
           </Navitem>
           <Navitem>
             <Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/about.html">
@@ -72,23 +75,16 @@ const Navlinks = styled.a`
 
 const BedIcon = styled(FontAwesomeIcon)`
   color: white;
-`
+`;
 
 const Icon = () => {
-
-    return (
-        
-        <BedIcon 
-            icon={faBed}
-            size="2x"
-        />
-    );
-}
+  return <BedIcon icon={faBed} size="2x" />;
+};
 
 const LogoWrap = styled.div`
-    width: 25vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-`
+  width: 25vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`;
