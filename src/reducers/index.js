@@ -22,45 +22,45 @@ const initialState = {
   isPosting: false,
   isPutting: false,
   isDeleting: false,
-  Error: null,
-
-  // data: {
-  //   sleep_start: null,
-  //   sleep_end: null,
-  //   user_id: "",
-  //   moods: {
-  //     before_sleep: "",
-  //     after_sleep: "",
-  //     daytime: "",
-  //   },
-  // },
-
-  data: [],
+  stateError: null,
+  entries: [], // need an empty array so that the .map has somewhere to place its new array
+  id: "",
+  data: {
+    sleep_start: null,
+    sleep_end: null,
+    user_id: "",
+    moods: {
+      before_sleep: "",
+      after_sleep: "",
+      daytime: "",
+    },
+  },
 };
 
-export const Reducer = (state = initialState, actions) => {
-  switch (actions.type) {
+export const Reducer = (state = initialState, action) => {
+  switch (action.type) {
     // axios.get = read
     case FETCH_START:
       return {
         ...state,
         isFetching: true,
         error: null,
-        data: [],
       };
     case FETCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
         error: null,
-        data: actions.payload,
+        entries: action.payload,
+
+        // state.sleep.filter((item) => {
+        //   return item.id !== action.payload;
       };
     case FETCH_FAILURE:
       return {
         ...state,
         isFetching: false,
-        error: actions.payload,
-        data: [],
+        error: action.payload,
       };
 
     // axios.post = create
@@ -69,21 +69,21 @@ export const Reducer = (state = initialState, actions) => {
         ...state,
         isPosting: true,
         error: null,
-        data: [],
+        data: action.payload,
       };
     case ADD_SUCCESS:
       return {
         ...state,
-        isPosting: false,
+        isFetching: false,
         error: null,
-        data: actions.payload,
+        entries: [...state.entries, action.payload],
       };
     case ADD_FAILURE:
       return {
         ...state,
-        isPosting: false,
-        error: actions.payload,
-        data: [],
+        isFetching: false,
+        error: action.payload,
+        entries: [],
       };
 
     // axios.put = update
@@ -92,21 +92,25 @@ export const Reducer = (state = initialState, actions) => {
         ...state,
         isPutting: true,
         error: null,
-        data: [],
+        entries: [],
       };
     case UPDATE_SUCCESS:
       return {
         ...state,
-        isPutting: false,
+        isFetching: false,
         error: null,
-        data: actions.payload,
+        entries: state.entries.map((entry) => {
+          if (entry.id === action.payload.id) {
+            return action.payload;
+          }
+          return entry;
+        }),
       };
     case UPDATE_FAILURE:
       return {
         ...state,
-        isPutting: false,
-        error: actions.payload,
-        data: [],
+        isFetching: false,
+        error: action.payload,
       };
 
     // axios.delete = delete
@@ -115,23 +119,20 @@ export const Reducer = (state = initialState, actions) => {
         ...state,
         isDeleting: true,
         error: null,
-        data: [],
+        entries: [],
       };
     case DELETE_SUCCESS:
       return {
         ...state,
-        isDeleting: false,
+        isFetching: false,
         error: null,
-        data: state.entries.filter((item) => {
-          return item.id !== actions.payload;
-        }),
+        entries: state.entries.filter((item) => item.id !== action.payload),
       };
     case DELETE_FAILURE:
       return {
         ...state,
-        isDeleting: false,
-        error: actions.payload,
-        data: [],
+        isFetching: false,
+        error: action.payload,
       };
 
     default:
