@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: baseline;
-  height: 100%;
+  height: 64.5vh;
   width: 100%;
   background-color: black;
   padding: 60px 0px;

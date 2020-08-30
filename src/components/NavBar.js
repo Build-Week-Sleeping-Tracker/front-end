@@ -6,12 +6,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const NavBar = () => {
   return (
     <Navbar>
-      <FontAwesomeIcon icon={faBed} />
-      <Navtitle>Sleep Tracker</Navtitle>
+      <LogoWrap>
+        <Icon />
+        <Navtitle>Sleep Tracker</Navtitle>   
+      </LogoWrap>
       <nav>
         <Navlist>
           <Navitem>
-            <Navlinks href="/home">Home</Navlinks>
+            <Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/index.html">Home</Navlinks>
           </Navitem>
           <Navitem>
             <Navlinks href="https://austin-greer-unit1-buildweek.netlify.app/about.html">
@@ -68,3 +70,26 @@ const Navlinks = styled.a`
     text-decoration: none;
   }
 `;
+
+const BedIcon = styled(FontAwesomeIcon)`
+  color: white;
+`
+
+const Icon = () => {
+
+    return (
+        
+        <BedIcon 
+            icon={faBed}
+            size="2x"
+        />
+    );
+}
+
+const LogoWrap = styled.div`
+    width: 25vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+`
