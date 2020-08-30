@@ -1,6 +1,7 @@
 import React from "react";
-
+import styled from "styled-components";
 import EntryForm from "./EntryForm";
+import SleepList from "./SleepList";
 
 const Dashboard = () => {
   // useEffect(() => {
@@ -14,9 +15,16 @@ const Dashboard = () => {
 
   return (
     <>
-      <EntryForm />
+      {/* <EntryForm /> */}
+      <FlexCards>
+        <SleepList />
+      </FlexCards>
     </>
   );
 };
 
 export default Dashboard;
+
+const FlexCards = styled.div`
+  width: 100%;
+`;
