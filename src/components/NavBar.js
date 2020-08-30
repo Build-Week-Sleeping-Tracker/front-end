@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { faBed } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavBar = () => {
   return (
     <Navbar>
-      <FontAwesomeIcon icon={faBed} />
       <Navtitle>Sleep Tracker</Navtitle>
       <nav>
         <Navlist>
