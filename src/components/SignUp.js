@@ -186,7 +186,7 @@ const SignUp = () => {
 export default SignUp;
 
 const Input = styled.input`
-  border: 3px solid #39869D;
+  border: 3px solid #39869d;
   border-radius: 20px;
   outline: none;
   height: 30px;
@@ -198,7 +198,7 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  background-color: #39869D;
+  background-color: #39869d;
   border-radius: 20px;
   padding: 5px 32px;
   font-size: 1.2rem;
@@ -213,18 +213,17 @@ const Error = styled.div`
 `;
 
 const Account = styled.p`
-  color: #39869D;
+  color: #39869d;
   margin: 0px 8px;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-
   &:hover {
     text-decoration: underline;
-    color: #39869D;
+    color: #39869d;
   }
-`
+`;
 
 // const ButtonAlternate = styled.button`
 //   border-radius: 20px;

@@ -23,44 +23,44 @@ const initialState = {
   isPutting: false,
   isDeleting: false,
   Error: null,
-  entries: [], // need an empty array so that the .map has somewhere to place its new array
-  id: "",
-  data: {
-    sleep_start: null,
-    sleep_end: null,
-    user_id: "",
-    moods: {
-      before_sleep: "",
-      after_sleep: "",
-      daytime: "",
-    },
-  },
+
+  // data: {
+  //   sleep_start: null,
+  //   sleep_end: null,
+  //   user_id: "",
+  //   moods: {
+  //     before_sleep: "",
+  //     after_sleep: "",
+  //     daytime: "",
+  //   },
+  // },
+
+  data: [],
 };
 
-export const Reducer = (state = initialState, action) => {
-  switch (action.type) {
+export const Reducer = (state = initialState, actions) => {
+  switch (actions.type) {
     // axios.get = read
     case FETCH_START:
       return {
         ...state,
         isFetching: true,
         error: null,
+        data: [],
       };
     case FETCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
         error: null,
-        entries: action.payload,
-
-        // state.sleep.filter((item) => {
-        //   return item.id !== action.payload;
+        data: actions.payload,
       };
     case FETCH_FAILURE:
       return {
         ...state,
         isFetching: false,
-        error: action.payload,
+        error: actions.payload,
+        data: [],
       };
 
     // axios.post = create
@@ -69,21 +69,21 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isPosting: true,
         error: null,
-        data: action.payload,
+        data: [],
       };
     case ADD_SUCCESS:
       return {
         ...state,
         isPosting: false,
         error: null,
-        entries: action.payload,
+        data: actions.payload,
       };
     case ADD_FAILURE:
       return {
         ...state,
         isPosting: false,
-        error: action.payload,
-        entries: [],
+        error: actions.payload,
+        data: [],
       };
 
     // axios.put = update
@@ -92,21 +92,21 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isPutting: true,
         error: null,
-        entries: [],
+        data: [],
       };
     case UPDATE_SUCCESS:
       return {
         ...state,
         isPutting: false,
         error: null,
-        entries: action.payload,
+        data: actions.payload,
       };
     case UPDATE_FAILURE:
       return {
         ...state,
         isPutting: false,
-        error: action.payload,
-        entries: [],
+        error: actions.payload,
+        data: [],
       };
 
     // axios.delete = delete
@@ -115,23 +115,23 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         isDeleting: true,
         error: null,
-        entries: [],
+        data: [],
       };
     case DELETE_SUCCESS:
       return {
         ...state,
         isDeleting: false,
         error: null,
-        entries: state.entries.filter((item) => {
-          return item.id !== action.payload;
+        data: state.entries.filter((item) => {
+          return item.id !== actions.payload;
         }),
       };
     case DELETE_FAILURE:
       return {
         ...state,
         isDeleting: false,
-        error: action.payload,
-        entries: [],
+        error: actions.payload,
+        data: [],
       };
 
     default:

@@ -65,7 +65,6 @@ const Navitem = styled.li`
 const Navlinks = styled.a`
   text-decoration: none;
   color: white;
-
   &:hover {
     text-decoration: none;
   }
