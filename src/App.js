@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { fetchSleep } from "./actions";
+import SleepList from "./components/SleepList";
 
 import "./App.css";
 
@@ -23,6 +25,10 @@ const Wrapper = styled.div`
 `;
 
 function App() {
+  // useEffect(() => {
+  //   fetchSleep();
+  // }, []);
+
   return (
     <Router>
       <div>
@@ -36,6 +42,7 @@ function App() {
               <PrivateRoute exact path="/protected" component={Dashboard} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={SignUp} />
+              <SleepList />
             </Switch>
 
             {/* <SignUp /> */}

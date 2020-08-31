@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* <EntryForm /> */}
+      <EntryForm />
       <FlexCards>
         <SleepList />
       </FlexCards>

@@ -91,6 +91,7 @@ const Login = (props) => {
       .then((res) => {
         console.log("rh: login success: res ", res.data);
         localStorage.setItem("authToken", res.data.token);
+        localStorage.setItem("userId", res.data.user_id);
         console.log(
           "rh: Login.js: this is the auth token data",
           res.data.token

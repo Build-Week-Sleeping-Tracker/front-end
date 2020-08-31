@@ -4,16 +4,15 @@ import { fetchSleep } from "../actions";
 import SleepCard from "./SleepCard";
 
 const SleepList = (props) => {
-  console.log("this is props sleeplist.js", props);
+  console.log("this is props sleeplist.js", props.data);
   useEffect(() => {
     props.fetchSleep();
   }, []);
 
   return (
     <div>
-      {/* {props.entries.map((entry) => (
-        <SleepCard entry={entry} />
-      ))} */}
+      {props.isFetching && <div> is loading </div>}
+      {props.data && props.data.map((entry) => <SleepCard entry={entry} />)}
     </div>
   );
 };
@@ -22,6 +21,7 @@ const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching,
     error: state.error,
+    data: state.data,
   };
 };
 

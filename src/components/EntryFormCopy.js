@@ -20,6 +20,8 @@ const EntryForm = () => {
   const [entry, setEntry] = useState([]);
 
   const [entryData, setEntryData] = useState({
+    start_date: "0",
+    end_date: "0",
     sleep_start: "0",
     sleep_end: "0",
     user_id: "",
