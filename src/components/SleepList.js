@@ -6,7 +6,7 @@ import SleepCard from "./SleepCard";
 const SleepList = (props) => {
   useEffect(() => {
     props.fetchSleep();
-    console.log("this is props sleeplist.js", props.data);
+    console.log("this is props from fetchSleep", props);
   }, []);
 
   return (

@@ -1,40 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { deleteSleep } from "../actions";
+import { deleteSleep, updateSleep } from "../actions";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
 
 const SleepCard = (props) => {
   // const dispatch = useDispatch();
 
-  const deleteCard = () => {
-    // console.log("this delete props", props.data);
-    deleteSleep();
-  };
+  // const deleteCard = (id, entry) => {
+  //   // console.log("this delete props", props.data);
+  //   deleteSleep(id, entry);
+  // };
 
-  const InitialEntries =  {
-    sleep_start: null,
-    sleep_end: null,
-    user_id: "",
-    moods: {
-    before_sleep: "",
-     after_sleep: "",
-    daytime: "",
-    },
-  }
+  // const InitialEntries = {
+  //   id: null,
+  //   sleep_start: null,
+  //   sleep_end: null,
+  //   user_id: "",
+  //   moods: {
+  //     before_sleep: "",
+  //     after_sleep: "",
+  //     daytime: "",
+  //   },
+  // };
 
-  const [editing, setEditing] = useState(false);
-  const [entriesToEdit, setEntriesToEdit] = useState(InitialEntries);
-  const editCard = () => {
-    setEditing(true);
-    setEntriesToEdit();
-  }
-  const saveEdit = (e) => {
-    e.preventDefault();
-    updateSleep();
-  }
-
-
+  // const [editing, setEditing] = useState(false);
+  // const [entriesToEdit, setEntriesToEdit] = useState(InitialEntries);
+  // const editCard = () => {
+  //   setEditing(true);
+  //   setEntriesToEdit();
+  // };
+  // const saveEdit = (e) => {
+  //   e.preventDefault();
+  //   updateSleep();
+  // };
 
   console.log("this is props sleepcard.js", props);
   return (
@@ -50,47 +49,45 @@ const SleepCard = (props) => {
       </button> */}
 
       {/* <button onClick={deleteCard(props.entry.id)}>Delete</button> */}
-      
+
       {/* delete card */}
-      <span
+      {/* <span
         className="delete"
         onClick={(e) => {
           e.stopPropagation();
-          deleteCard(props.entry.id);
+          deleteCard();
         }}
       >
         X
-      </span>
+      </span> */}
 
-      {editing && (
+      {/* {editing && (
 
         
-        )}
-
-
-
+        )} */}
     </StyledCard>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isDeleting: state.isDeleting,
-    error: state.error,
-    data: state.data,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     isDeleting: state.isDeleting,
+//     error: state.error,
+//     data: state.data,
+//     id: state.id,
+//   };
+// };
 
-const mapStateToDispatch = {
-  // fetchSleep,
-  // addSleep,
-  // updateSleep,
-  deleteSleep,
-};
+// const mapStateToDispatch = {
+//   // fetchSleep,
+//   // addSleep,
+//   // updateSleep,
+//   deleteSleep,
+// };
 
-export default connect(mapStateToProps, mapStateToDispatch)(SleepCard);
+// export default connect(mapStateToProps, mapStateToDispatch)(SleepCard);
 
-// export default SleepCard;
+export default SleepCard;
 
 const StyledCard = styled.div`
   background-color: #d1cbcb;

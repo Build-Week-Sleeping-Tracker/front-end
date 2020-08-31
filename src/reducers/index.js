@@ -36,7 +36,8 @@ const initialState = {
   // },
 
   data: [],
-  id: "",
+  // id: null,
+  // data: { id: null },
 };
 
 export const Reducer = (state = initialState, actions) => {
@@ -123,8 +124,8 @@ export const Reducer = (state = initialState, actions) => {
         ...state,
         isDeleting: false,
         error: null,
-        data: state.data.filter((item) => {
-          return item.id !== actions.payload;
+        data: state.data.filter((entry) => {
+          return entry.id !== actions.payload;
         }),
       };
     case DELETE_FAILURE:

@@ -47,11 +47,11 @@ export const UPDATE_START = "UPDATE_START";
 export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 export const UPDATE_FAILURE = "UPDATE_FAILURE";
 
-export const updateSleep = (entry) => (dispatch) => {
+export const updateSleep = (id, entry) => (dispatch) => {
   dispatch({ type: UPDATE_START });
 
   axiosWithAuth()
-    .put(`/api/sleep/${id}`, sleep)
+    .put(`/api/sleep/${id}`, entry)
     .then((res) => {
       console.log("put success", res.data);
       dispatch({ type: UPDATE_SUCCESS, payload: res.data });
