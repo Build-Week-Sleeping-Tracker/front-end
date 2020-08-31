@@ -76,6 +76,9 @@ export const deleteSleep = (id) => (dispatch) => {
       console.log("delete success", res.data);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });
     })
+    .then((res) => {
+      window.location.reload();
+    })
     .catch((err) => {
       console.log("error", err);
       dispatch({ type: DELETE_FAILURE, payload: err });
