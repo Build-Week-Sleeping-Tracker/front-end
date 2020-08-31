@@ -7,10 +7,10 @@ import { useDispatch } from "react-redux";
 const SleepCard = (props) => {
   // const dispatch = useDispatch();
 
-  // const deleteCard = (id, entry) => {
-  //   // console.log("this delete props", props.data);
-  //   deleteSleep(id, entry);
-  // };
+  const deleteCard = (props) => {
+    console.log("this delete props", props);
+    props.deleteSleep();
+  };
 
   // const InitialEntries = {
   //   id: null,
@@ -51,7 +51,7 @@ const SleepCard = (props) => {
       {/* <button onClick={deleteCard(props.entry.id)}>Delete</button> */}
 
       {/* delete card */}
-      {/* <span
+      <span
         className="delete"
         onClick={(e) => {
           e.stopPropagation();
@@ -59,7 +59,7 @@ const SleepCard = (props) => {
         }}
       >
         X
-      </span> */}
+      </span>
 
       {/* {editing && (
 
@@ -69,25 +69,25 @@ const SleepCard = (props) => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     isDeleting: state.isDeleting,
-//     error: state.error,
-//     data: state.data,
-//     id: state.id,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    isDeleting: state.isDeleting,
+    error: state.error,
+    data: state.data,
+    id: state.id,
+  };
+};
 
-// const mapStateToDispatch = {
-//   // fetchSleep,
-//   // addSleep,
-//   // updateSleep,
-//   deleteSleep,
-// };
+const mapStateToDispatch = {
+  // fetchSleep,
+  // addSleep,
+  // updateSleep,
+  deleteSleep,
+};
 
-// export default connect(mapStateToProps, mapStateToDispatch)(SleepCard);
+export default connect(mapStateToProps, mapStateToDispatch)(SleepCard);
 
-export default SleepCard;
+// export default SleepCard;
 
 const StyledCard = styled.div`
   background-color: #d1cbcb;

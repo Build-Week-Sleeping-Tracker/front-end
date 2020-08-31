@@ -67,11 +67,11 @@ export const DELETE_START = "DELETE_START";
 export const DELETE_SUCCESS = "DELETE_SUCCESS";
 export const DELETE_FAILURE = "DELETE_FAILURE";
 
-export const deleteSleep = (entry) => (dispatch) => {
+export const deleteSleep = (id, entry) => (dispatch) => {
   dispatch({ type: DELETE_START });
 
   axiosWithAuth()
-    .delete(`/sleep/${entry.id}`, entry)
+    .delete(`/sleep/${id}`, entry)
     .then((res) => {
       console.log("delete success", res.data);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });

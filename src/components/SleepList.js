@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchSleep } from "../actions";
+import { fetchSleep, deleteSleep } from "../actions";
 import SleepCard from "./SleepCard";
 
 const SleepList = (props) => {
+  console.log("this is props from fetchSleep", props);
   useEffect(() => {
     props.fetchSleep();
-    console.log("this is props from fetchSleep", props);
+    props.deleteSleep();
   }, []);
 
   return (
@@ -22,6 +23,7 @@ const SleepList = (props) => {
 const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching,
+    isDeleting: state.isDeleting,
     error: state.error,
     data: state.data,
   };
@@ -31,7 +33,7 @@ const mapStateToDispatch = {
   fetchSleep,
   // addSleep,
   // updateSleep,
-  // deleteSleep,
+  deleteSleep,
 };
 
 export default connect(mapStateToProps, mapStateToDispatch)(SleepList);
