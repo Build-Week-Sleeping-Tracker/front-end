@@ -36,6 +36,7 @@ const initialState = {
   // },
 
   data: [],
+  id: "",
 };
 
 export const Reducer = (state = initialState, actions) => {
@@ -122,7 +123,7 @@ export const Reducer = (state = initialState, actions) => {
         ...state,
         isDeleting: false,
         error: null,
-        data: state.entries.filter((item) => {
+        data: state.data.filter((item) => {
           return item.id !== actions.payload;
         }),
       };
