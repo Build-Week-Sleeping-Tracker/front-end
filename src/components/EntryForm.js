@@ -17,7 +17,7 @@ import {
 import styled from "styled-components";
 
 const EntryForm = (props) => {
-  const { push } = useHistory();
+  // const { push } = useHistory();
   // console.log("this is my props for entryform", props);
 
   const [entry, setEntry] = useState({
@@ -67,7 +67,7 @@ const EntryForm = (props) => {
     };
     console.log("this is onsubmit", newEntry);
     props.addSleep(newEntry);
-    push(0);
+    // push(0);
   };
 
   return (
@@ -277,7 +277,7 @@ const EntryForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     entries: state.entries,
-    isFetching: state.isFetching,
+    isPosting: state.isPosting,
     error: state.error,
   };
 };

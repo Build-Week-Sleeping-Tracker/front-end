@@ -27,14 +27,18 @@ export const ADD_START = "ADD_START";
 export const ADD_SUCCESS = "ADD_SUCCESS";
 export const ADD_FAILURE = "ADD_FAILURE";
 
-export const addSleep = (entryData) => (dispatch) => {
+export const addSleep = () => (dispatch) => {
   dispatch({ type: ADD_START });
 
   axiosWithAuth()
-    .post(`/sleep`, entryData)
+    .post(`/sleep`)
     .then((res) => {
-      console.log("post success", res.data);
-      dispatch({ type: ADD_SUCCESS, payload: res.data });
+      axiosWithAuth()
+        .get("/sleep")
+        .then((res) => {
+          console.log("post success", res.data);
+          dispatch({ type: ADD_SUCCESS, payload: res.data });
+        });
     })
     .catch((err) => {
       console.log("error", err);
@@ -47,14 +51,18 @@ export const UPDATE_START = "UPDATE_START";
 export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 export const UPDATE_FAILURE = "UPDATE_FAILURE";
 
-export const updateSleep = (id, entry) => (dispatch) => {
+export const updateSleep = (id) => (dispatch) => {
   dispatch({ type: UPDATE_START });
 
   axiosWithAuth()
-    .put(`/api/sleep/${id}`, entry)
+    .put(`/sleep/${id}`)
     .then((res) => {
-      console.log("put success", res.data);
-      dispatch({ type: UPDATE_SUCCESS, payload: res.data });
+      axiosWithAuth()
+        .get("/sleep")
+        .then((res) => {
+          console.log("update success", res.data);
+          dispatch({ type: UPDATE_SUCCESS, payload: res.data });
+        });
     })
     .catch((err) => {
       console.log("error", err);

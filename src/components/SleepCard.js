@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { deleteSleep, updateSleep } from "../actions";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
+import EditCard from "./EditCard";
 
 const SleepCard = (props) => {
   // const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const SleepCard = (props) => {
   // };
   // const saveEdit = (e) => {
   //   e.preventDefault();
-  //   updateSleep();
+  //   props.updateSleep();
   // };
 
   console.log("this is props sleepcard.js", props);
@@ -61,10 +62,14 @@ const SleepCard = (props) => {
         X
       </span>
 
-      {/* {editing && (
+      <button onClick={(e) => {}}>Edit</button>
 
-        
-        )} */}
+      {/* EditCard has the put/updateSleep actions and the isPutting reducer */}
+      <EditCard
+        key={props.entry.id}
+        entry={props.entry}
+        updateEntry={props.setEntry}
+      />
     </StyledCard>
   );
 };
