@@ -7,7 +7,6 @@ const SleepList = (props) => {
   console.log("this is props from fetchSleep", props);
   useEffect(() => {
     props.fetchSleep();
-    props.deleteSleep();
   }, []);
 
   return (

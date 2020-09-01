@@ -7,10 +7,10 @@ import { useDispatch } from "react-redux";
 const SleepCard = (props) => {
   // const dispatch = useDispatch();
 
-  const deleteCard = (props) => {
-    console.log("this delete props", props);
-    props.deleteSleep();
-  };
+  // const deleteCard = (props) => {
+  //   console.log("this delete props", props);
+  //   props.deleteSleep();
+  // };
 
   // const InitialEntries = {
   //   id: null,
@@ -55,7 +55,7 @@ const SleepCard = (props) => {
         className="delete"
         onClick={(e) => {
           e.stopPropagation();
-          deleteCard();
+          props.deleteSleep(props.entry.id);
         }}
       >
         X

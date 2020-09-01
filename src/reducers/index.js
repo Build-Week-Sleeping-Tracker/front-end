@@ -63,6 +63,7 @@ export const Reducer = (state = initialState, actions) => {
         isFetching: false,
         error: actions.payload,
         data: [],
+        id: null,
       };
 
     // axios.post = create
@@ -124,9 +125,10 @@ export const Reducer = (state = initialState, actions) => {
         ...state,
         isDeleting: false,
         error: null,
-        data: state.data.filter((entry) => {
-          return entry.id !== actions.payload;
-        }),
+        // data: state.data.filter((entry) => {
+        //   return entry.id !== actions.payload;
+        // }),
+        data: actions.payload,
       };
     case DELETE_FAILURE:
       return {
