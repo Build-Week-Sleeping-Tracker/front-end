@@ -20,9 +20,10 @@ import {
 const initialState = {
   isFetching: false,
   isPosting: false,
-  isPutting: false,
+  isEditing: false,
   isDeleting: false,
   stateError: null,
+  beingEdited: null,
   entries: [], // need an empty array so that the .map has somewhere to place its new array
   id: "",
   data: {
@@ -90,18 +91,23 @@ export const Reducer = (state = initialState, action) => {
     case UPDATE_START:
       return {
         ...state,
-        isPutting: true,
-        error: null,
-        entries: [],
+        isEditing: true,
+        beingEdited: action.payload,
       };
     case UPDATE_SUCCESS:
+      // TURN ISEDITING AND BEINGEDITED TO FALSE AND NULL RESPECTIVLY
+      // FORCE RERENDER
       return {
         ...state,
         isFetching: false,
+        isEditing: false,
+        beingEdited: null,
         error: null,
         entries: state.entries.map((entry) => {
+          console.log("reducer", entry.id, action.payload);
+          console.log("edit reducer", action.payload.id, action.payload.object);
           if (entry.id === action.payload.id) {
-            return action.payload;
+            return action.payload.object;
           }
           return entry;
         }),

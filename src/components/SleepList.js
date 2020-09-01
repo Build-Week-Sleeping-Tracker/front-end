@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import SleepCard from "./SleepCard";
-import { fetchSleep } from "../actions";
 
 const SleepList = (props) => {
   const dispatch = useDispatch();
@@ -20,13 +19,6 @@ const SleepList = (props) => {
       ))}
     </div>
   );
-};
-
-const mapStateToProps = (state) => {
-  return {
-    isFetching: state.isFetching,
-    error: state.error,
-  };
 };
 
 const mapStateToDispatch = {

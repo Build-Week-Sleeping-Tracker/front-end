@@ -47,6 +47,10 @@ export const UPDATE_START = "UPDATE_START";
 export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 export const UPDATE_FAILURE = "UPDATE_FAILURE";
 
+export const editSleepEntry = (entry) => (dispatch) => {
+  dispatch({ type: UPDATE_START, payload: entry });
+};
+
 export const updateSleep = (entry) => (dispatch) => {
   dispatch({ type: FETCH_START });
 
@@ -55,6 +59,9 @@ export const updateSleep = (entry) => (dispatch) => {
     .then((res) => {
       console.log("put success", res.data);
       dispatch({ type: UPDATE_SUCCESS, payload: res.data });
+    })
+    .then((res) => {
+      window.location.reload();
     })
     .catch((err) => {
       console.log("error", err);

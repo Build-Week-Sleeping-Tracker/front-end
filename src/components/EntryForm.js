@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Sleeplist from "./SleepList";
+
 // import { fetchSleep } from "../actions";
 // import { connect } from "react-redux";
 
@@ -14,13 +14,16 @@ import {
   faGrinStars,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { addSleep } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { addSleep, updateSleep, editSleepEntry } from "../actions";
+import moment from "moment";
 
 const EntryForm = () => {
   // console.log("this is my props for entryform", props);
-  const [entry, setEntry] = useState([]);
+
   const dispatch = useDispatch();
+  const { beingEdited } = useSelector((state) => state);
+  console.log({ beingEdited });
 
   const [entryData, setEntryData] = useState({
     sleep_start: "0",
@@ -33,33 +36,64 @@ const EntryForm = () => {
     },
   });
 
-  const { handleSubmit, register, reset } = useForm();
+  const { handleSubmit, register, reset, setValue } = useForm();
+
+  useEffect(() => {
+    if (beingEdited) {
+      setValue(
+        "start_date_picker",
+        moment(beingEdited.sleep_start).format("yyyy-MM-DD")
+      );
+      setValue("start_time", moment(beingEdited.sleep_start).format("HH:mm"));
+      setValue(
+        "end_date_picker",
+        moment(beingEdited.sleep_end).format("yyyy-MM-DD")
+      );
+      setValue("end_time", moment(beingEdited.sleep_end).format("HH:mm"));
+    }
+  }, [beingEdited]);
 
   const onSubmit = (data) => {
+    console.log(data);
     const stored = {
       start_date: `${data.start_date_picker} ${data.start_time}`,
       end_date: `${data.end_date_picker} ${data.end_time}`,
-      before_sleep_mood: data.start_mood,
-      after_sleep_mood: data.end_mood,
-      daytime_mood: data.overall_mood,
+      before_sleep_mood:
+        data.start_mood_1 ||
+        data.start_mood_2 ||
+        data.start_mood_3 ||
+        data.start_mood_4,
+      after_sleep_mood:
+        data.end_mood_1 ||
+        data.end_mood_2 ||
+        data.end_mood_3 ||
+        data.end_mood_4,
+      daytime_mood:
+        data.overall_mood_1 ||
+        data.overall_mood_2 ||
+        data.overall_mood_3 ||
+        data.overall_mood_4,
     };
 
     console.log("Form Data being posted", data);
     console.log("formatted", stored.start_date, stored.end_date);
 
-    dispatch(
-      addSleep({
-        sleep_start: stored.start_date,
-        sleep_end: stored.end_date,
-        user_id: data.user_id,
-        moods: {
-          before_sleep: stored.before_sleep_mood,
-          after_sleep: stored.after_sleep_mood,
-          daytime: stored.daytime_mood,
-        },
-      })
-    );
-
+    if (beingEdited === true) {
+      dispatch(editSleepEntry(beingEdited));
+    } else {
+      dispatch(
+        addSleep({
+          sleep_start: stored.start_date,
+          sleep_end: stored.end_date,
+          user_id: data.user_id,
+          moods: {
+            before_sleep: stored.before_sleep_mood,
+            after_sleep: stored.after_sleep_mood,
+            daytime: stored.daytime_mood,
+          },
+        })
+      );
+    }
     reset();
   };
 
@@ -102,9 +136,10 @@ const EntryForm = () => {
                   <input
                     type="radio"
                     id="start_angry"
-                    name="start_mood"
+                    name="start_mood_1"
                     value={1}
                     ref={register}
+                    checked={beingEdited?.moods?.before_sleep === "1"}
                   />
                 </EmojiWrap>
                 <EmojiWrap className="emoji-wrapper">
@@ -112,9 +147,10 @@ const EntryForm = () => {
                   <input
                     type="radio"
                     id="start_meh"
-                    name="start_mood"
+                    name="start_mood_2"
                     value={2}
                     ref={register}
+                    checked={beingEdited?.moods?.before_sleep === "2"}
                   />
                 </EmojiWrap>
                 <EmojiWrap className="emoji-wrapper">
@@ -122,9 +158,10 @@ const EntryForm = () => {
                   <input
                     type="radio"
                     id="start_happy"
-                    name="start_mood"
+                    name="start_mood_3"
                     value={3}
                     ref={register}
+                    checked={beingEdited?.moods?.before_sleep === "3"}
                   />
                 </EmojiWrap>
                 <EmojiWrap className="emoji-wrapper">
@@ -132,9 +169,10 @@ const EntryForm = () => {
                   <input
                     type="radio"
                     id="start_really_happy"
-                    name="start_mood"
+                    name="start_mood_4"
                     value={4}
                     ref={register}
+                    checked={beingEdited?.moods?.before_sleep === "4"}
                   />
                 </EmojiWrap>
               </fieldset>
@@ -164,9 +202,10 @@ const EntryForm = () => {
                   <input
                     type="radio"
                     id="end_angry"
-                    name="end_mood"
+                    name="end_mood_1"
                     value={1}
                     ref={register}
+                    checked={beingEdited?.moods?.after_sleep === "1"}
                   />
                 </EmojiWrap>
                 <EmojiWrap className="emoji-wrapper">
@@ -174,9 +213,10 @@ const EntryForm = () => {
                   <input
                     type="radio"
                     id="end_meh"
-                    name="end_mood"
+                    name="end_mood_2"
                     value={2}
                     ref={register}
+                    checked={beingEdited?.moods?.after_sleep === "2"}
                   />
                 </EmojiWrap>
                 <EmojiWrap className="emoji-wrapper">
@@ -184,9 +224,10 @@ const EntryForm = () => {
                   <input
                     type="radio"
                     id="end_happy"
-                    name="end_mood"
+                    name="end_mood_3"
                     value={3}
                     ref={register}
+                    checked={beingEdited?.moods?.after_sleep === "3"}
                   />
                 </EmojiWrap>
                 <EmojiWrap className="emoji-wrapper">
@@ -194,9 +235,10 @@ const EntryForm = () => {
                   <input
                     type="radio"
                     id="end_really_happy"
-                    name="end_mood"
+                    name="end_mood_4"
                     value={4}
                     ref={register}
+                    checked={beingEdited?.moods?.after_sleep === "4"}
                   />
                 </EmojiWrap>
               </FlexFieldSet>
@@ -210,9 +252,10 @@ const EntryForm = () => {
                 <input
                   type="radio"
                   id="overall_angry"
-                  name="overall_mood"
+                  name="overall_mood_1"
                   value={1}
                   ref={register}
+                  checked={beingEdited?.moods?.daytime === "1"}
                 />
               </EmojiWrap>
               <EmojiWrap className="emoji-wrapper">
@@ -220,9 +263,10 @@ const EntryForm = () => {
                 <input
                   type="radio"
                   id="overall_meh"
-                  name="overall_mood"
+                  name="overall_mood_2"
                   value={2}
                   ref={register}
+                  checked={beingEdited?.moods?.daytime === "2"}
                 />
               </EmojiWrap>
               <EmojiWrap className="emoji-wrapper">
@@ -230,9 +274,10 @@ const EntryForm = () => {
                 <input
                   type="radio"
                   id="overall_happy"
-                  name="overall_mood"
+                  name="overall_mood_3"
                   value={3}
                   ref={register}
+                  checked={beingEdited?.moods?.daytime === "3"}
                 />
               </EmojiWrap>
               <EmojiWrap className="emoji-wrapper">
@@ -240,19 +285,17 @@ const EntryForm = () => {
                 <input
                   type="radio"
                   id="overall_really_happy"
-                  name="overall_mood"
+                  name="overall_mood_4"
                   value={4}
                   ref={register}
+                  checked={beingEdited?.moods?.daytime === "4"}
                 />
               </EmojiWrap>
             </Container>
           </fieldset>
-          <Button type="submit">Submit Entry</Button>
+          <Button type="submit">{beingEdited ? "Save" : "Submit Entry"}</Button>
         </form>
       </CardContainer>
-      {/* <FlexCards>
-        <Sleeplist entries={entry} />
-      </FlexCards> */}
     </>
   );
 };
@@ -307,8 +350,4 @@ const Button = styled.button`
   font-size: 1.2rem;
   color: white;
   margin: 24px 0px;
-`;
-
-const FlexCards = styled.div`
-  width: 100%;
 `;

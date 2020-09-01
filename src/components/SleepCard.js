@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { deleteSleep } from "../actions";
 import { useDispatch } from "react-redux";
+import { deleteSleep, editSleepEntry } from "../actions";
 
 const SleepCard = (props) => {
   const dispatch = useDispatch();
@@ -17,6 +17,9 @@ const SleepCard = (props) => {
       <p>{`My mood when I went to sleep was at a number ${props.entry.moods.before_sleep}`}</p>
       <button onClick={() => dispatch(deleteSleep(props.entry.id))}>
         Delete
+      </button>
+      <button onClick={() => dispatch(editSleepEntry(props.entry))}>
+        Edit
       </button>
     </StyledCard>
   );
