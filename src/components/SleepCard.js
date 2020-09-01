@@ -62,8 +62,6 @@ const SleepCard = (props) => {
         X
       </span>
 
-      <button onClick={(e) => {}}>Edit</button>
-
       {/* EditCard has the put/updateSleep actions and the isPutting reducer */}
       <EditCard
         key={props.entry.id}
