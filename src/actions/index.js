@@ -55,7 +55,7 @@ export const updateSleep = (entry) => (dispatch) => {
   dispatch({ type: FETCH_START });
 
   axiosWithAuth()
-    .put(`/api/sleep/${entry.id}`, entry)
+    .put(`/sleep/${entry.id}`, entry)
     .then((res) => {
       console.log("put success", res.data);
       dispatch({ type: UPDATE_SUCCESS, payload: res.data });

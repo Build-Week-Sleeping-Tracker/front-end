@@ -105,7 +105,7 @@ export const Reducer = (state = initialState, action) => {
         error: null,
         entries: state.entries.map((entry) => {
           console.log("reducer", entry.id, action.payload);
-          console.log("edit reducer", action.payload.id, action.payload.object);
+          console.log("edit reducer", action.payload.id, action.payload);
           if (entry.id === action.payload.id) {
             return action.payload.object;
           }

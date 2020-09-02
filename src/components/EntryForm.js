@@ -71,18 +71,22 @@ const EntryForm = () => {
     console.log("Form Data being posted", data);
     console.log("formatted", stored.start_date, stored.end_date);
 
-    dispatch(
-      addSleep({
-        sleep_start: stored.start_date,
-        sleep_end: stored.end_date,
-        user_id: data.user_id,
-        moods: {
-          before_sleep: stored.before_sleep_mood,
-          after_sleep: stored.after_sleep_mood,
-          daytime: stored.daytime_mood,
-        },
-      })
-    );
+    if (beingEdited) {
+      dispatch(updateSleep(beingEdited));
+    } else {
+      dispatch(
+        addSleep({
+          sleep_start: stored.start_date,
+          sleep_end: stored.end_date,
+          user_id: data.user_id,
+          moods: {
+            before_sleep: stored.before_sleep_mood,
+            after_sleep: stored.after_sleep_mood,
+            daytime: stored.daytime_mood,
+          },
+        })
+      );
+    }
 
     reset();
   };
