@@ -76,7 +76,7 @@ const SignUp = () => {
 
     axios
       .post(
-        "https://webpt15-sleep-tracker-api.herokuapp.com/api/auth/register",
+        "https://sleeptracker-back-end.onrender.com/api/auth/register",
         credentials
       )
       .then((res) => {
